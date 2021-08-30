@@ -133,6 +133,9 @@
   <data name="followup2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\followup2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="thin-0160_arrow_next_right" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\thin-0160_arrow_next_right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="learning" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\learning.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -150,6 +153,9 @@
   </data>
   <data name="thin-0001_compose_write_pencil_new" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\thin-0001_compose_write_pencil_new.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="thin-0714_identity_card_photo_user_profile" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\thin-0714_identity_card_photo_user_profile.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="thin-0551_information_about" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\thin-0551_information_about.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -178,8 +184,14 @@
   <data name="learning3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\learning3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="thin-0007_book_reading_read_bookmark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\thin-0007_book_reading_read_bookmark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="learning1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\learning1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="thin-0159_arrow_back_left" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\thin-0159_arrow_back_left.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="thin-0578_information_office_desk_support_help" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\thin-0578_information_office_desk_support_help.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -193,19 +205,22 @@
   <data name="logo1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logo1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="thin-0101_notes_text_notebook" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\thin-0101_notes_text_notebook.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="thin-0153_delete_exit_remove_close" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\thin-0153_delete_exit_remove_close.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="thin-0551_information_about1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\thin-0551_information_about1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="thin-0100_to_do_list_reminder_done" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\thin-0100_to_do_list_reminder_done.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="thin-0706_user_profile_add_new" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\thin-0706_user_profile_add_new.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="thin-0714_identity_card_photo_user_profile" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\thin-0714_identity_card_photo_user_profile.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="thin-0101_notes_text_notebook" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\thin-0101_notes_text_notebook.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="thin-0007_book_reading_read_bookmark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\thin-0007_book_reading_read_bookmark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="thin-0142_rotate_sync" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\thin-0142_rotate_sync.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

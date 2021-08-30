@@ -175,6 +175,12 @@
     <Compile Include="New staff\frmNewStaff_Main.Designer.cs">
       <DependentUpon>frmNewStaff_Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="New staff\frmTest_Questions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="New staff\frmTest_Questions.Designer.cs">
+      <DependentUpon>frmTest_Questions.cs</DependentUpon>
+    </Compile>
     <Compile Include="RadioButtonCellElement.cs" />
     <Compile Include="Follow_up\frmReport.cs">
       <SubType>Form</SubType>
@@ -358,6 +364,9 @@
     <EmbeddedResource Include="New staff\frmNewStaff_Main.resx">
       <DependentUpon>frmNewStaff_Main.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="New staff\frmTest_Questions.resx">
+      <DependentUpon>frmTest_Questions.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -420,6 +429,11 @@
     <None Include="Resources\thin-0014_notebook_paper_todo.png" />
     <None Include="Resources\thin-0001_compose_write_pencil_new.png" />
     <None Include="Resources\thin-0007_book_reading_read_bookmark.png" />
+    <None Include="Resources\thin-0160_arrow_next_right.png" />
+    <None Include="Resources\thin-0159_arrow_back_left.png" />
+    <None Include="Resources\thin-0100_to_do_list_reminder_done.png" />
+    <None Include="Resources\thin-0153_delete_exit_remove_close.png" />
+    <None Include="Resources\thin-0142_rotate_sync.png" />
     <Content Include="Scripts\PersianDatePicker.js" />
     <Content Include="Scripts\PersianDatePicker.min.js" />
     <None Include="Resources\Healthcare-Clinic-icon.png" />

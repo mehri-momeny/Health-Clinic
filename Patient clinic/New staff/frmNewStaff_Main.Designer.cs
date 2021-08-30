@@ -30,11 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNewStaff_Main));
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.line1 = new DevComponents.DotNetBar.Controls.Line();
-            this.label1 = new System.Windows.Forms.Label();
             this.btnexit = new DevComponents.DotNetBar.ButtonX();
             this.btnReport = new DevComponents.DotNetBar.ButtonX();
+            this.line1 = new DevComponents.DotNetBar.Controls.Line();
             this.btnshowTestform = new DevComponents.DotNetBar.ButtonX();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -82,29 +82,6 @@
             this.groupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel1.TabIndex = 0;
             // 
-            // line1
-            // 
-            this.line1.BackColor = System.Drawing.Color.Transparent;
-            this.line1.Location = new System.Drawing.Point(24, 40);
-            this.line1.Name = "line1";
-            this.line1.Size = new System.Drawing.Size(188, 23);
-            this.line1.TabIndex = 42;
-            this.line1.Text = "line1";
-            this.line1.Thickness = 2;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label1.Location = new System.Drawing.Point(71, 8);
-            this.label1.Name = "label1";
-            this.label1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label1.Size = new System.Drawing.Size(95, 29);
-            this.label1.TabIndex = 41;
-            this.label1.Text = "همکاران جدید";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
             // btnexit
             // 
             this.btnexit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
@@ -134,6 +111,16 @@
             this.btnReport.TabIndex = 41;
             this.btnReport.Text = "گزارشات";
             // 
+            // line1
+            // 
+            this.line1.BackColor = System.Drawing.Color.Transparent;
+            this.line1.Location = new System.Drawing.Point(24, 40);
+            this.line1.Name = "line1";
+            this.line1.Size = new System.Drawing.Size(188, 23);
+            this.line1.TabIndex = 42;
+            this.line1.Text = "line1";
+            this.line1.Thickness = 2;
+            // 
             // btnshowTestform
             // 
             this.btnshowTestform.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
@@ -149,6 +136,19 @@
             this.btnshowTestform.Text = "آزمون";
             this.btnshowTestform.Click += new System.EventHandler(this.Btnshowform_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label1.Location = new System.Drawing.Point(71, 8);
+            this.label1.Name = "label1";
+            this.label1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label1.Size = new System.Drawing.Size(95, 29);
+            this.label1.TabIndex = 41;
+            this.label1.Text = "همکاران جدید";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // frmNewStaff_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -156,11 +156,13 @@
             this.ClientSize = new System.Drawing.Size(236, 291);
             this.Controls.Add(this.groupPanel1);
             this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmNewStaff_Main";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "همکاران جدید";
+            this.Load += new System.EventHandler(this.FrmNewStaff_Main_Load);
             this.groupPanel1.ResumeLayout(false);
             this.groupPanel1.PerformLayout();
             this.ResumeLayout(false);

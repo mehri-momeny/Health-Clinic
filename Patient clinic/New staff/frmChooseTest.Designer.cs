@@ -30,19 +30,19 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmChooseTest));
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.cmbTest = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.txtLast_name = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtFirst_name = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtNational_Code = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.line1 = new DevComponents.DotNetBar.Controls.Line();
             this.label1 = new System.Windows.Forms.Label();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtNational_Code = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.txtFirst_name = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.btnTestStrat = new DevComponents.DotNetBar.ButtonX();
+            this.btnTestStart = new DevComponents.DotNetBar.ButtonX();
             this.btnexit = new DevComponents.DotNetBar.ButtonX();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtLast_name = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.cmbTest = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.groupPanel1.SuspendLayout();
             this.groupPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -95,7 +95,112 @@
             // 
             // 
             this.groupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.groupPanel1.TabIndex = 1;
+            this.groupPanel1.TabIndex = 0;
+            // 
+            // cmbTest
+            // 
+            this.cmbTest.DisplayMember = "Text";
+            this.cmbTest.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbTest.FormattingEnabled = true;
+            this.cmbTest.ItemHeight = 17;
+            this.cmbTest.Location = new System.Drawing.Point(18, 205);
+            this.cmbTest.Name = "cmbTest";
+            this.cmbTest.Size = new System.Drawing.Size(192, 23);
+            this.cmbTest.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cmbTest.TabIndex = 15;
+            // 
+            // txtLast_name
+            // 
+            // 
+            // 
+            // 
+            this.txtLast_name.Border.Class = "TextBoxBorder";
+            this.txtLast_name.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtLast_name.Location = new System.Drawing.Point(53, 163);
+            this.txtLast_name.Name = "txtLast_name";
+            this.txtLast_name.PreventEnterBeep = true;
+            this.txtLast_name.Size = new System.Drawing.Size(157, 22);
+            this.txtLast_name.TabIndex = 10;
+            // 
+            // txtFirst_name
+            // 
+            // 
+            // 
+            // 
+            this.txtFirst_name.Border.Class = "TextBoxBorder";
+            this.txtFirst_name.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtFirst_name.Location = new System.Drawing.Point(53, 121);
+            this.txtFirst_name.Name = "txtFirst_name";
+            this.txtFirst_name.PreventEnterBeep = true;
+            this.txtFirst_name.Size = new System.Drawing.Size(157, 22);
+            this.txtFirst_name.TabIndex = 5;
+            // 
+            // txtNational_Code
+            // 
+            // 
+            // 
+            // 
+            this.txtNational_Code.Border.Class = "TextBoxBorder";
+            this.txtNational_Code.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtNational_Code.Location = new System.Drawing.Point(53, 79);
+            this.txtNational_Code.Name = "txtNational_Code";
+            this.txtNational_Code.PreventEnterBeep = true;
+            this.txtNational_Code.Size = new System.Drawing.Size(157, 22);
+            this.txtNational_Code.TabIndex = 1;
+            this.txtNational_Code.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtNational_Code_KeyPress);
+            this.txtNational_Code.Leave += new System.EventHandler(this.TxtNational_Code_Leave);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label5.Location = new System.Drawing.Point(226, 166);
+            this.label5.Name = "label5";
+            this.label5.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label5.Size = new System.Drawing.Size(88, 16);
+            this.label5.TabIndex = 44;
+            this.label5.Text = "نام خانوادگی :";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label4.Location = new System.Drawing.Point(281, 124);
+            this.label4.Name = "label4";
+            this.label4.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label4.Size = new System.Drawing.Size(33, 16);
+            this.label4.TabIndex = 44;
+            this.label4.Text = "نام :";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label3.Location = new System.Drawing.Point(255, 82);
+            this.label3.Name = "label3";
+            this.label3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label3.Size = new System.Drawing.Size(59, 16);
+            this.label3.TabIndex = 44;
+            this.label3.Text = "کد ملی :";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label2.Location = new System.Drawing.Point(267, 208);
+            this.label2.Name = "label2";
+            this.label2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label2.Size = new System.Drawing.Size(47, 16);
+            this.label2.TabIndex = 44;
+            this.label2.Text = "آزمون :";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // line1
             // 
@@ -124,7 +229,7 @@
             // 
             this.groupPanel2.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.groupPanel2.Controls.Add(this.btnTestStrat);
+            this.groupPanel2.Controls.Add(this.btnTestStart);
             this.groupPanel2.Controls.Add(this.btnexit);
             this.groupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel2.Location = new System.Drawing.Point(3, 260);
@@ -158,85 +263,21 @@
             // 
             // 
             this.groupPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.groupPanel2.TabIndex = 1;
+            this.groupPanel2.TabIndex = 20;
             // 
-            // label2
+            // btnTestStart
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label2.Location = new System.Drawing.Point(267, 208);
-            this.label2.Name = "label2";
-            this.label2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label2.Size = new System.Drawing.Size(47, 16);
-            this.label2.TabIndex = 44;
-            this.label2.Text = "آزمون :";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // txtNational_Code
-            // 
-            // 
-            // 
-            // 
-            this.txtNational_Code.Border.Class = "TextBoxBorder";
-            this.txtNational_Code.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtNational_Code.Location = new System.Drawing.Point(53, 79);
-            this.txtNational_Code.Name = "txtNational_Code";
-            this.txtNational_Code.PreventEnterBeep = true;
-            this.txtNational_Code.Size = new System.Drawing.Size(157, 22);
-            this.txtNational_Code.TabIndex = 45;
-            // 
-            // txtFirst_name
-            // 
-            // 
-            // 
-            // 
-            this.txtFirst_name.Border.Class = "TextBoxBorder";
-            this.txtFirst_name.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtFirst_name.Location = new System.Drawing.Point(53, 121);
-            this.txtFirst_name.Name = "txtFirst_name";
-            this.txtFirst_name.PreventEnterBeep = true;
-            this.txtFirst_name.Size = new System.Drawing.Size(157, 22);
-            this.txtFirst_name.TabIndex = 45;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label3.Location = new System.Drawing.Point(255, 82);
-            this.label3.Name = "label3";
-            this.label3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label3.Size = new System.Drawing.Size(59, 16);
-            this.label3.TabIndex = 44;
-            this.label3.Text = "کد ملی :";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label4.Location = new System.Drawing.Point(281, 124);
-            this.label4.Name = "label4";
-            this.label4.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label4.Size = new System.Drawing.Size(33, 16);
-            this.label4.TabIndex = 44;
-            this.label4.Text = "نام :";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // btnTestStrat
-            // 
-            this.btnTestStrat.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnTestStrat.BackColor = System.Drawing.Color.Transparent;
-            this.btnTestStrat.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnTestStrat.Image = global::Patient_clinic.Properties.Resources.thin_0001_compose_write_pencil_new;
-            this.btnTestStrat.Location = new System.Drawing.Point(202, 3);
-            this.btnTestStrat.Name = "btnTestStrat";
-            this.btnTestStrat.Size = new System.Drawing.Size(122, 34);
-            this.btnTestStrat.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnTestStrat.TabIndex = 41;
-            this.btnTestStrat.Text = "شروع آزمون";
+            this.btnTestStart.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnTestStart.BackColor = System.Drawing.Color.Transparent;
+            this.btnTestStart.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnTestStart.Image = global::Patient_clinic.Properties.Resources.thin_0001_compose_write_pencil_new;
+            this.btnTestStart.Location = new System.Drawing.Point(202, 3);
+            this.btnTestStart.Name = "btnTestStart";
+            this.btnTestStart.Size = new System.Drawing.Size(122, 34);
+            this.btnTestStart.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnTestStart.TabIndex = 20;
+            this.btnTestStart.Text = "شروع آزمون";
+            this.btnTestStart.Click += new System.EventHandler(this.BtnTestStart_Click);
             // 
             // btnexit
             // 
@@ -248,47 +289,9 @@
             this.btnexit.Name = "btnexit";
             this.btnexit.Size = new System.Drawing.Size(122, 34);
             this.btnexit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnexit.TabIndex = 40;
+            this.btnexit.TabIndex = 25;
             this.btnexit.Text = "بازگشت";
             this.btnexit.Click += new System.EventHandler(this.Btnexit_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label5.Location = new System.Drawing.Point(226, 166);
-            this.label5.Name = "label5";
-            this.label5.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label5.Size = new System.Drawing.Size(88, 16);
-            this.label5.TabIndex = 44;
-            this.label5.Text = "نام خانوادگی :";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // txtLast_name
-            // 
-            // 
-            // 
-            // 
-            this.txtLast_name.Border.Class = "TextBoxBorder";
-            this.txtLast_name.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtLast_name.Location = new System.Drawing.Point(53, 163);
-            this.txtLast_name.Name = "txtLast_name";
-            this.txtLast_name.PreventEnterBeep = true;
-            this.txtLast_name.Size = new System.Drawing.Size(157, 22);
-            this.txtLast_name.TabIndex = 45;
-            // 
-            // cmbTest
-            // 
-            this.cmbTest.DisplayMember = "Text";
-            this.cmbTest.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbTest.FormattingEnabled = true;
-            this.cmbTest.ItemHeight = 16;
-            this.cmbTest.Location = new System.Drawing.Point(53, 205);
-            this.cmbTest.Name = "cmbTest";
-            this.cmbTest.Size = new System.Drawing.Size(157, 22);
-            this.cmbTest.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cmbTest.TabIndex = 46;
             // 
             // frmChooseTest
             // 
@@ -297,11 +300,15 @@
             this.ClientSize = new System.Drawing.Size(353, 318);
             this.Controls.Add(this.groupPanel1);
             this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmChooseTest";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "انتخاب آزمون";
+            this.Load += new System.EventHandler(this.FrmChooseTest_Load);
             this.groupPanel1.ResumeLayout(false);
             this.groupPanel1.PerformLayout();
             this.groupPanel2.ResumeLayout(false);
@@ -315,7 +322,7 @@
         private DevComponents.DotNetBar.Controls.Line line1;
         private System.Windows.Forms.Label label1;
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel2;
-        private DevComponents.DotNetBar.ButtonX btnTestStrat;
+        private DevComponents.DotNetBar.ButtonX btnTestStart;
         private DevComponents.DotNetBar.ButtonX btnexit;
         private System.Windows.Forms.Label label2;
         private DevComponents.DotNetBar.Controls.TextBoxX txtFirst_name;

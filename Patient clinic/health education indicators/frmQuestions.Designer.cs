@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmQuestions));
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.bpDate = new BPersianCalender.BPersianCalenderTextBox();
             this.lbl_Section = new System.Windows.Forms.Label();
@@ -47,6 +47,8 @@
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnCalculate = new DevComponents.DotNetBar.ButtonX();
+            this.btnSave = new DevComponents.DotNetBar.ButtonX();
+            this.btnexit = new DevComponents.DotNetBar.ButtonX();
             this.label11 = new System.Windows.Forms.Label();
             this.GPHeaderForm20 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.chbNational_Code = new DevComponents.DotNetBar.Controls.CheckBoxX();
@@ -95,8 +97,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtArchiveNumber = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
-            this.btnSave = new DevComponents.DotNetBar.ButtonX();
-            this.btnexit = new DevComponents.DotNetBar.ButtonX();
             this.groupPanel1.SuspendLayout();
             this.groupPanel2.SuspendLayout();
             this.GPHeaderForm20.SuspendLayout();
@@ -380,6 +380,36 @@
             this.btnCalculate.TabIndex = 40;
             this.btnCalculate.Text = "محاسبه مجموع امتیاز";
             this.btnCalculate.Click += new System.EventHandler(this.BtnCalculate_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnSave.BackColor = System.Drawing.Color.Transparent;
+            this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnSave.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
+            this.btnSave.Location = new System.Drawing.Point(10, 8);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(105, 32);
+            this.btnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnSave.TabIndex = 55;
+            this.btnSave.Text = "ثبت";
+            this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
+            // 
+            // btnexit
+            // 
+            this.btnexit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnexit.BackColor = System.Drawing.Color.Transparent;
+            this.btnexit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnexit.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.btnexit.Image = ((System.Drawing.Image)(resources.GetObject("btnexit.Image")));
+            this.btnexit.Location = new System.Drawing.Point(10, 46);
+            this.btnexit.Name = "btnexit";
+            this.btnexit.Size = new System.Drawing.Size(105, 32);
+            this.btnexit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnexit.TabIndex = 60;
+            this.btnexit.Text = "خروج";
+            this.btnexit.Click += new System.EventHandler(this.Btnexit_Click);
             // 
             // label11
             // 
@@ -1107,36 +1137,6 @@
             this.label24.Text = "شماره پرونده بیمار : ";
             this.label24.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // btnSave
-            // 
-            this.btnSave.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnSave.BackColor = System.Drawing.Color.Transparent;
-            this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnSave.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.Location = new System.Drawing.Point(10, 8);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(105, 32);
-            this.btnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnSave.TabIndex = 55;
-            this.btnSave.Text = "ثبت";
-            this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
-            // 
-            // btnexit
-            // 
-            this.btnexit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnexit.BackColor = System.Drawing.Color.Transparent;
-            this.btnexit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnexit.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.btnexit.Image = ((System.Drawing.Image)(resources.GetObject("btnexit.Image")));
-            this.btnexit.Location = new System.Drawing.Point(10, 46);
-            this.btnexit.Name = "btnexit";
-            this.btnexit.Size = new System.Drawing.Size(105, 32);
-            this.btnexit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnexit.TabIndex = 60;
-            this.btnexit.Text = "خروج";
-            this.btnexit.Click += new System.EventHandler(this.Btnexit_Click);
-            // 
             // frmQuestions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1151,6 +1151,7 @@
             this.Controls.Add(this.GPHeaderForm21);
             this.Controls.Add(this.GPHeaderForm23);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;

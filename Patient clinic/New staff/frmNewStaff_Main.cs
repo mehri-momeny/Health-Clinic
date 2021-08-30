@@ -27,5 +27,10 @@ namespace Patient_clinic.New_staff
             frmChooseTest frmChooseTest = new frmChooseTest();
             frmChooseTest.ShowDialog();
         }
+
+        private void FrmNewStaff_Main_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

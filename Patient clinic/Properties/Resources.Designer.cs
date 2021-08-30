@@ -233,9 +233,59 @@ namespace Patient_clinic.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap thin_0100_to_do_list_reminder_done {
+            get {
+                object obj = ResourceManager.GetObject("thin-0100_to_do_list_reminder_done", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap thin_0101_notes_text_notebook {
             get {
                 object obj = ResourceManager.GetObject("thin-0101_notes_text_notebook", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap thin_0142_rotate_sync {
+            get {
+                object obj = ResourceManager.GetObject("thin-0142_rotate_sync", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap thin_0153_delete_exit_remove_close {
+            get {
+                object obj = ResourceManager.GetObject("thin-0153_delete_exit_remove_close", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap thin_0159_arrow_back_left {
+            get {
+                object obj = ResourceManager.GetObject("thin-0159_arrow_back_left", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap thin_0160_arrow_next_right {
+            get {
+                object obj = ResourceManager.GetObject("thin-0160_arrow_next_right", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
