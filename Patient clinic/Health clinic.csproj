@@ -175,6 +175,12 @@
     <Compile Include="New staff\frmNewStaff_Main.Designer.cs">
       <DependentUpon>frmNewStaff_Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="New staff\frmReportNSTests.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="New staff\frmReportNSTests.Designer.cs">
+      <DependentUpon>frmReportNSTests.cs</DependentUpon>
+    </Compile>
     <Compile Include="New staff\frmTest_Questions.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -363,6 +369,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="New staff\frmNewStaff_Main.resx">
       <DependentUpon>frmNewStaff_Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="New staff\frmReportNSTests.resx">
+      <DependentUpon>frmReportNSTests.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="New staff\frmTest_Questions.resx">
       <DependentUpon>frmTest_Questions.cs</DependentUpon>

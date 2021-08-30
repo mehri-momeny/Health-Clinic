@@ -110,6 +110,7 @@
             this.btnReport.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnReport.TabIndex = 41;
             this.btnReport.Text = "گزارشات";
+            this.btnReport.Click += new System.EventHandler(this.BtnReport_Click);
             // 
             // line1
             // 
