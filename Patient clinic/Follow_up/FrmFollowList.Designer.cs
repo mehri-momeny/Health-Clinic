@@ -54,6 +54,11 @@
             this.BtnChangeDate = new DevComponents.DotNetBar.ButtonX();
             this.btnNwRef = new DevComponents.DotNetBar.ButtonX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
+            this.bpCalUntil = new BPersianCalender.BPersianCalenderTextBox();
+            this.labelX1 = new DevComponents.DotNetBar.LabelX();
+            this.labelX3 = new DevComponents.DotNetBar.LabelX();
+            this.radtxtFollowDate = new Telerik.WinControls.UI.RadTextBox();
+            this.radLabel3 = new Telerik.WinControls.UI.RadLabel();
             this.groupPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radchbEnable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).BeginInit();
@@ -73,6 +78,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.radtxtName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radGVFollow_List)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radGVFollow_List.MasterTemplate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radtxtFollowDate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).BeginInit();
             this.SuspendLayout();
             // 
             // groupPanel1
@@ -82,11 +89,14 @@
             this.groupPanel1.Controls.Add(this.radchbEnable);
             this.groupPanel1.Controls.Add(this.radPanel1);
             this.groupPanel1.Controls.Add(this.radGVFollow_List);
+            this.groupPanel1.Controls.Add(this.bpCalUntil);
             this.groupPanel1.Controls.Add(this.bpcalDate);
             this.groupPanel1.Controls.Add(this.btnexit);
             this.groupPanel1.Controls.Add(this.btnFailedCall);
             this.groupPanel1.Controls.Add(this.BtnChangeDate);
             this.groupPanel1.Controls.Add(this.btnNwRef);
+            this.groupPanel1.Controls.Add(this.labelX3);
+            this.groupPanel1.Controls.Add(this.labelX1);
             this.groupPanel1.Controls.Add(this.labelX2);
             this.groupPanel1.DisabledBackColor = System.Drawing.Color.Empty;
             this.groupPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -126,7 +136,7 @@
             // radchbEnable
             // 
             this.radchbEnable.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radchbEnable.Location = new System.Drawing.Point(654, 18);
+            this.radchbEnable.Location = new System.Drawing.Point(529, 18);
             this.radchbEnable.Name = "radchbEnable";
             this.radchbEnable.Size = new System.Drawing.Size(190, 18);
             this.radchbEnable.TabIndex = 44;
@@ -139,8 +149,10 @@
             this.radPanel1.Controls.Add(this.radlblNational_code);
             this.radPanel1.Controls.Add(this.radtxtNational_Code);
             this.radPanel1.Controls.Add(this.radLbl);
+            this.radPanel1.Controls.Add(this.radLabel3);
             this.radPanel1.Controls.Add(this.radLblTel);
             this.radPanel1.Controls.Add(this.radlbSurgery_type);
+            this.radPanel1.Controls.Add(this.radtxtFollowDate);
             this.radPanel1.Controls.Add(this.radTxtResult);
             this.radPanel1.Controls.Add(this.radTxtTel);
             this.radPanel1.Controls.Add(this.radTxtSurgery_type);
@@ -160,7 +172,7 @@
             // radlblNational_code
             // 
             this.radlblNational_code.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radlblNational_code.Location = new System.Drawing.Point(154, 32);
+            this.radlblNational_code.Location = new System.Drawing.Point(154, 31);
             this.radlblNational_code.Name = "radlblNational_code";
             this.radlblNational_code.Size = new System.Drawing.Size(79, 19);
             this.radlblNational_code.TabIndex = 1;
@@ -170,7 +182,7 @@
             // radtxtNational_Code
             // 
             this.radtxtNational_Code.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radtxtNational_Code.Location = new System.Drawing.Point(10, 29);
+            this.radtxtNational_Code.Location = new System.Drawing.Point(10, 27);
             this.radtxtNational_Code.Name = "radtxtNational_Code";
             this.radtxtNational_Code.Size = new System.Drawing.Size(116, 27);
             this.radtxtNational_Code.TabIndex = 0;
@@ -178,7 +190,7 @@
             // radLbl
             // 
             this.radLbl.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            this.radLbl.Location = new System.Drawing.Point(160, 222);
+            this.radLbl.Location = new System.Drawing.Point(160, 235);
             this.radLbl.Name = "radLbl";
             this.radLbl.Size = new System.Drawing.Size(73, 19);
             this.radLbl.TabIndex = 1;
@@ -188,7 +200,7 @@
             // radLblTel
             // 
             this.radLblTel.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            this.radLblTel.Location = new System.Drawing.Point(201, 184);
+            this.radLblTel.Location = new System.Drawing.Point(201, 201);
             this.radLblTel.Name = "radLblTel";
             this.radLblTel.Size = new System.Drawing.Size(32, 19);
             this.radLblTel.TabIndex = 1;
@@ -198,7 +210,7 @@
             // radlbSurgery_type
             // 
             this.radlbSurgery_type.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            this.radlbSurgery_type.Location = new System.Drawing.Point(200, 146);
+            this.radlbSurgery_type.Location = new System.Drawing.Point(200, 133);
             this.radlbSurgery_type.Name = "radlbSurgery_type";
             this.radlbSurgery_type.Size = new System.Drawing.Size(33, 19);
             this.radlbSurgery_type.TabIndex = 1;
@@ -208,7 +220,7 @@
             // radTxtResult
             // 
             this.radTxtResult.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radTxtResult.Location = new System.Drawing.Point(11, 219);
+            this.radTxtResult.Location = new System.Drawing.Point(11, 231);
             this.radTxtResult.Name = "radTxtResult";
             this.radTxtResult.Size = new System.Drawing.Size(116, 27);
             this.radTxtResult.TabIndex = 0;
@@ -216,7 +228,7 @@
             // radTxtTel
             // 
             this.radTxtTel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radTxtTel.Location = new System.Drawing.Point(10, 181);
+            this.radTxtTel.Location = new System.Drawing.Point(10, 197);
             this.radTxtTel.Name = "radTxtTel";
             this.radTxtTel.Size = new System.Drawing.Size(116, 27);
             this.radTxtTel.TabIndex = 0;
@@ -224,7 +236,7 @@
             // radTxtSurgery_type
             // 
             this.radTxtSurgery_type.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radTxtSurgery_type.Location = new System.Drawing.Point(10, 143);
+            this.radTxtSurgery_type.Location = new System.Drawing.Point(10, 129);
             this.radTxtSurgery_type.Name = "radTxtSurgery_type";
             this.radTxtSurgery_type.Size = new System.Drawing.Size(116, 27);
             this.radTxtSurgery_type.TabIndex = 0;
@@ -232,7 +244,7 @@
             // radLabel2
             // 
             this.radLabel2.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            this.radLabel2.Location = new System.Drawing.Point(53, 108);
+            this.radLabel2.Location = new System.Drawing.Point(53, 99);
             this.radLabel2.Name = "radLabel2";
             this.radLabel2.Size = new System.Drawing.Size(33, 19);
             this.radLabel2.TabIndex = 1;
@@ -242,7 +254,7 @@
             // radLabel1
             // 
             this.radLabel1.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            this.radLabel1.Location = new System.Drawing.Point(203, 108);
+            this.radLabel1.Location = new System.Drawing.Point(203, 99);
             this.radLabel1.Name = "radLabel1";
             this.radLabel1.Size = new System.Drawing.Size(30, 19);
             this.radLabel1.TabIndex = 1;
@@ -252,7 +264,7 @@
             // radTxtAge
             // 
             this.radTxtAge.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radTxtAge.Location = new System.Drawing.Point(90, 105);
+            this.radTxtAge.Location = new System.Drawing.Point(90, 95);
             this.radTxtAge.Name = "radTxtAge";
             this.radTxtAge.Size = new System.Drawing.Size(36, 27);
             this.radTxtAge.TabIndex = 0;
@@ -260,7 +272,7 @@
             // radLblName
             // 
             this.radLblName.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            this.radLblName.Location = new System.Drawing.Point(125, 70);
+            this.radLblName.Location = new System.Drawing.Point(125, 65);
             this.radLblName.Name = "radLblName";
             this.radLblName.Size = new System.Drawing.Size(108, 19);
             this.radLblName.TabIndex = 1;
@@ -270,7 +282,7 @@
             // radtxtName
             // 
             this.radtxtName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radtxtName.Location = new System.Drawing.Point(10, 67);
+            this.radtxtName.Location = new System.Drawing.Point(10, 61);
             this.radtxtName.Name = "radtxtName";
             this.radtxtName.Size = new System.Drawing.Size(116, 27);
             this.radtxtName.TabIndex = 0;
@@ -311,7 +323,7 @@
             this.bpcalDate.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.bpcalDate.SelectedDate = null;
             this.bpcalDate.Shamsi = null;
-            this.bpcalDate.Size = new System.Drawing.Size(123, 23);
+            this.bpcalDate.Size = new System.Drawing.Size(95, 23);
             this.bpcalDate.TabIndex = 41;
             this.bpcalDate.TextChanged += new System.EventHandler(this.BpcalDate_TextChanged);
             // 
@@ -390,6 +402,67 @@
             this.labelX2.TabIndex = 38;
             this.labelX2.Text = " تاریخ :";
             // 
+            // bpCalUntil
+            // 
+            this.bpCalUntil.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.bpCalUntil.Location = new System.Drawing.Point(729, 16);
+            this.bpCalUntil.Miladi = new System.DateTime(((long)(0)));
+            this.bpCalUntil.Name = "bpCalUntil";
+            this.bpCalUntil.NowDateSelected = false;
+            this.bpCalUntil.ReadOnly = true;
+            this.bpCalUntil.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.bpCalUntil.SelectedDate = null;
+            this.bpCalUntil.Shamsi = null;
+            this.bpCalUntil.Size = new System.Drawing.Size(95, 23);
+            this.bpCalUntil.TabIndex = 41;
+            this.bpCalUntil.TextChanged += new System.EventHandler(this.BpcalDate_TextChanged);
+            // 
+            // labelX1
+            // 
+            this.labelX1.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.labelX1.Location = new System.Drawing.Point(951, 16);
+            this.labelX1.Name = "labelX1";
+            this.labelX1.Size = new System.Drawing.Size(14, 23);
+            this.labelX1.TabIndex = 38;
+            this.labelX1.Text = "از";
+            // 
+            // labelX3
+            // 
+            this.labelX3.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.labelX3.Location = new System.Drawing.Point(827, 16);
+            this.labelX3.Name = "labelX3";
+            this.labelX3.Size = new System.Drawing.Size(14, 23);
+            this.labelX3.TabIndex = 38;
+            this.labelX3.Text = "تا";
+            // 
+            // radtxtFollowDate
+            // 
+            this.radtxtFollowDate.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radtxtFollowDate.Location = new System.Drawing.Point(9, 163);
+            this.radtxtFollowDate.Name = "radtxtFollowDate";
+            this.radtxtFollowDate.Size = new System.Drawing.Size(116, 27);
+            this.radtxtFollowDate.TabIndex = 0;
+            // 
+            // radLabel3
+            // 
+            this.radLabel3.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.radLabel3.Location = new System.Drawing.Point(159, 167);
+            this.radLabel3.Name = "radLabel3";
+            this.radLabel3.Size = new System.Drawing.Size(74, 19);
+            this.radLabel3.TabIndex = 1;
+            this.radLabel3.Text = "تاریخ پیگیری";
+            this.radLabel3.TextAlignment = System.Drawing.ContentAlignment.TopRight;
+            // 
             // FrmFollowList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -425,6 +498,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.radtxtName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radGVFollow_List.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radGVFollow_List)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radtxtFollowDate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -454,5 +529,10 @@
         private Telerik.WinControls.UI.RadTextBox radTxtResult;
         private DevComponents.DotNetBar.ButtonX btnFailedCall;
         private Telerik.WinControls.UI.RadCheckBox radchbEnable;
+        private BPersianCalender.BPersianCalenderTextBox bpCalUntil;
+        private DevComponents.DotNetBar.LabelX labelX3;
+        private DevComponents.DotNetBar.LabelX labelX1;
+        private Telerik.WinControls.UI.RadLabel radLabel3;
+        private Telerik.WinControls.UI.RadTextBox radtxtFollowDate;
     }
 }

@@ -43,7 +43,7 @@ namespace Patient_clinic
             Surgeries_Datatable =  ds.Tables["Surgery"];
         }
 
-        void Dgv_load(string TodayDate)
+        void Dgv_load(string StartDate,string EndDate)
         {
 
             SqlDataAdapter adp = new SqlDataAdapter();
@@ -60,7 +60,7 @@ namespace Patient_clinic
                                          "     INNER JOIN FU_FOLLOW_PATIENT_CLINICAL PC " +
                                          "     ON PD.PATIENT_ID = PC.PATIENT_ID) PCD " +
                                          "  ON PCD.PATIENT_ID = FL.PATIENT_ID AND PCD.FOLLOW_ID = FL.FOLLOW_ID " +
-                                         "WHERE FL.FOLLOWUP_DATE =  \'" + TodayDate + "\' AND FL.FLAG = 0";
+                                         "WHERE FL.FOLLOWUP_DATE between  \'" + StartDate + "\' and \'" + EndDate + "\' AND FL.FLAG = 0";
 
                 adp.Fill(ds, "Patients");
             }
@@ -73,7 +73,7 @@ namespace Patient_clinic
                                          "     INNER JOIN FU_FOLLOW_PATIENT_CLINICAL PC " +
                                          "     ON PD.PATIENT_ID = PC.PATIENT_ID) PCD " +
                                          "  ON PCD.PATIENT_ID = FL.PATIENT_ID AND PCD.FOLLOW_ID = FL.FOLLOW_ID " +
-                                         "WHERE FL.FOLLOWUP_DATE =  \'" + TodayDate + "\'";
+                                         "WHERE FL.FOLLOWUP_DATE  between  \'" + StartDate + "\' and \'" + EndDate + "\'";
 
                 adp.Fill(ds, "Patients");
             }
@@ -114,7 +114,9 @@ namespace Patient_clinic
                 //    this.radTxtSurgery_type.Text = "گلوکوم حاد";
                 //}
 
+                this.radtxtFollowDate.Text = Main_Functions.GetSafeString(currentRow.Cells["FOLLOWUP_DATE"].Value);
                 this.radTxtTel.Text = Main_Functions.GetSafeString(currentRow.Cells["Tel"].Value);
+
                 switch (Main_Functions.GetSafeString(currentRow.Cells["Flag"].Value))
                 {
                     case "-1":
@@ -256,7 +258,7 @@ namespace Patient_clinic
             {
                 FrmQueries frmQueries = new FrmQueries(int.Parse(SelectedRow.Cells["Surgery_Type"].Value.ToString()), SelectedRow.Cells["Patient_ID"].Value.ToString(), SelectedRow.Cells["Follow_ID"].Value.ToString(), SelectedRow.Cells["First_name"].Value.ToString()+" "+ SelectedRow.Cells["Last_name"].Value.ToString(),(int)(SelectedRow.Cells["Follow_turn"].Value));  //مقدار دهی میشود بر اساس نوع فالوآپ
                 frmQueries.ShowDialog();
-                Dgv_load(bpcalDate.Text);
+                Dgv_load(bpcalDate.Text,bpCalUntil.Text);
                 change_selected_row(this.radGVFollow_List.CurrentRow);
             }
         }
@@ -319,7 +321,7 @@ namespace Patient_clinic
         {
             Load_ComboBoxes_Datasources();
             bpcalDate.Today_Click(null, null);
-
+            bpCalUntil.Today_Click(null, null);
             //Dgv_load(bpcalDate.Text);
             //change_selected_row(this.radGVFollow_List.CurrentRow);
             //SelectedRow = this.radGVFollow_List.CurrentRow;
@@ -404,7 +406,7 @@ namespace Patient_clinic
 
         private void BpcalDate_TextChanged(object sender, EventArgs e)
         {
-            Dgv_load(bpcalDate.Text);
+            Dgv_load(bpcalDate.Text, bpCalUntil.Text);
             change_selected_row(this.radGVFollow_List.CurrentRow);
             //SelectedRow = this.radGVFollow_List.CurrentRow;
         }
@@ -439,7 +441,7 @@ namespace Patient_clinic
             else
             {
                 new frmNextDate(SelectedRow.Cells["Patient_ID"].Value.ToString(), SelectedRow.Cells["Follow_ID"].Value.ToString(), (int)(SelectedRow.Cells["Follow_turn"].Value)).ShowDialog();
-                Dgv_load(bpcalDate.Text);
+                Dgv_load(bpcalDate.Text, bpCalUntil.Text);
                 change_selected_row(this.radGVFollow_List.CurrentRow);
 
             }
@@ -474,7 +476,7 @@ namespace Patient_clinic
                     throw;
                 }
                 MessageBox.Show("ثبت شد.");
-                Dgv_load(bpcalDate.Text);
+                Dgv_load(bpcalDate.Text, bpCalUntil.Text);
                 change_selected_row(this.radGVFollow_List.CurrentRow);
                 //UpdatePanelInfo(this.radGVFollow_List.CurrentRow);
             }
@@ -490,7 +492,7 @@ namespace Patient_clinic
             {
                 Active_Item = false;
             }
-            Dgv_load(bpcalDate.Text);
+            Dgv_load(bpcalDate.Text, bpCalUntil.Text);
             change_selected_row(this.radGVFollow_List.CurrentRow);
 
         }

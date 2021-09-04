@@ -151,6 +151,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="diseases Report\frmDiseaseReport_M.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="diseases Report\frmDiseaseReport_M.Designer.cs">
+      <DependentUpon>frmDiseaseReport_M.cs</DependentUpon>
+    </Compile>
     <Compile Include="health education indicators\frmReport_EI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -163,11 +169,23 @@
     <Compile Include="Learning\frmClinicReport.Designer.cs">
       <DependentUpon>frmClinicReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="New staff\frmChooseReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="New staff\frmChooseReport.Designer.cs">
+      <DependentUpon>frmChooseReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="New staff\frmChooseTest.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="New staff\frmChooseTest.Designer.cs">
       <DependentUpon>frmChooseTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="New staff\frmGeneralReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="New staff\frmGeneralReport.Designer.cs">
+      <DependentUpon>frmGeneralReport.cs</DependentUpon>
     </Compile>
     <Compile Include="New staff\frmNewStaff_Main.cs">
       <SubType>Form</SubType>
@@ -302,6 +320,9 @@
     <Compile Include="ToggleButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <EmbeddedResource Include="diseases Report\frmDiseaseReport_M.resx">
+      <DependentUpon>frmDiseaseReport_M.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Follow_up\frmReport.resx">
       <DependentUpon>frmReport.cs</DependentUpon>
     </EmbeddedResource>
@@ -364,8 +385,14 @@
     <EmbeddedResource Include="Learning\frm_Diagnoses.resx">
       <DependentUpon>frm_Diagnoses.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="New staff\frmChooseReport.resx">
+      <DependentUpon>frmChooseReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="New staff\frmChooseTest.resx">
       <DependentUpon>frmChooseTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="New staff\frmGeneralReport.resx">
+      <DependentUpon>frmGeneralReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="New staff\frmNewStaff_Main.resx">
       <DependentUpon>frmNewStaff_Main.cs</DependentUpon>

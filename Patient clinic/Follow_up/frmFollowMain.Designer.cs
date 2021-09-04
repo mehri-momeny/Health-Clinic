@@ -133,7 +133,7 @@
             this.buttonX1.Size = new System.Drawing.Size(204, 52);
             this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonX1.TabIndex = 18;
-            this.buttonX1.Text = "لیست بیماران امروز";
+            this.buttonX1.Text = "لیست بیماران ";
             this.buttonX1.Click += new System.EventHandler(this.ButtonX1_Click);
             // 
             // btnNew
