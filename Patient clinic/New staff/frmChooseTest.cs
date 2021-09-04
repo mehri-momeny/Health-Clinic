@@ -39,14 +39,14 @@ namespace Patient_clinic.New_staff
                 {
                     if (Staff_ID != 0 && Update_Staff_Info())
                     {
-                        frmTest_Questions frmTest_Questions = new frmTest_Questions(Staff_ID, Test_ID,bpcalTestDate.Text);
+                        frmTest_Questions frmTest_Questions = new frmTest_Questions(Staff_ID, Test_ID);
                         frmTest_Questions.ShowDialog();
                     }
                     else
                     {
                         if (Save_Staff_Info())
                         {
-                            frmTest_Questions frmTest_Questions = new frmTest_Questions(Staff_ID, Test_ID, bpcalTestDate.Text);
+                            frmTest_Questions frmTest_Questions = new frmTest_Questions(Staff_ID, Test_ID);
                             frmTest_Questions.ShowDialog();
                         }
                     }
@@ -180,8 +180,6 @@ namespace Patient_clinic.New_staff
         {
             txtNational_Code.Focus();
             Load_Default_Value();
-            bpcalTestDate.Today_Click(null, null);
-            bpcalTestDate.ReadOnly = false;
         }
 
         void Load_Default_Value()
@@ -213,11 +211,6 @@ namespace Patient_clinic.New_staff
         private void TxtNational_Code_Leave(object sender, EventArgs e)
         {
             Load_Staff_Info();
-        }
-
-        private void GroupPanel1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -28,13 +28,11 @@ namespace Patient_clinic.New_staff
         int Q_Number = 1;
         int Total_Point = 0;
         int Last_Opt = 0;
-        string T_Date = "";
         #endregion
-        public frmTest_Questions(int Staff_ID, int test_ID,string T_Date_)
+        public frmTest_Questions(int Staff_ID, int test_ID)
         {
             S_ID = Staff_ID;
             Test_ID = test_ID;
-            T_Date = T_Date_;
             InitializeComponent();
         }
 
@@ -314,13 +312,12 @@ namespace Patient_clinic.New_staff
                     con.Open();
                     //INSERT
                     cmd.Parameters.Clear();
-                    cmd.CommandText = "INSERT INTO [dbo].[NS_Test_Result] ([S_ID],[T_ID],[Point],[Date]) " +
-                                                                  " VALUES(@S_ID, @T_ID, @Point,@Date)";
+                    cmd.CommandText = "INSERT INTO [dbo].[NS_Test_Result] ([S_ID],[T_ID],[Point]) " +
+                                                                  " VALUES(@S_ID, @T_ID, @Point)";
 
                     cmd.Parameters.AddWithValue("@S_ID", S_ID);
                     cmd.Parameters.AddWithValue("@T_ID", Test_ID);
                     cmd.Parameters.AddWithValue("@Point", Total_Point);
-                    cmd.Parameters.AddWithValue("@Date", T_Date);
                     cmd.ExecuteNonQuery();
                 }
                 catch (Exception ex)

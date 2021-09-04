@@ -70,31 +70,18 @@ namespace Patient_clinic.New_staff
                     con.Open();
                 cmd.Connection = con;
                 cmd.Parameters.Clear();
-                cmd.CommandText = "SELECT Point,Date FROM NS_Test_Result WHERE S_ID = @S_ID AND T_ID = @T_ID";
+                cmd.CommandText = "SELECT Point FROM NS_Test_Result WHERE S_ID = @S_ID AND T_ID = @T_ID";
                 cmd.Parameters.AddWithValue("S_ID", S_ID);
                 cmd.Parameters.AddWithValue("T_ID", cmbTest.SelectedValue);
 
-
-                SqlDataReader reader = cmd.ExecuteReader();
-                if (reader.Read())  //while (reader.Read())
-                {
-                    txtPoint.Text = Convert.ToInt32(reader["Point"]).ToString();
-                    lblDate.Text = reader["Date"].ToString();
-                }
-                else
-                {
-                    txtPoint.Text = String.Empty;
-                    lblDate.Text = "آزمون انجام نشده است";
-                }
-
-                reader.Close();
-                
+                txtPoint.Text = cmd.ExecuteScalar().ToString();
 
 
                 //total point of test 
                 cmd.Parameters.Clear();
                 cmd.CommandText = "SELECT [Total_Point] FROM [NS_Tests] WHERE ID = @T_ID";
                 cmd.Parameters.AddWithValue("T_ID", cmbTest.SelectedValue);
+
                 lbltotalPoint.Text = cmd.ExecuteScalar().ToString();
             }
             catch (Exception ex)
@@ -215,11 +202,6 @@ namespace Patient_clinic.New_staff
         private void Btnexit_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void Label6_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

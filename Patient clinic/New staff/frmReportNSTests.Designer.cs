@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition3 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReportNSTests));
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.cmbTest = new DevComponents.DotNetBar.Controls.ComboBoxEx();
@@ -39,13 +39,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtPoint = new System.Windows.Forms.TextBox();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.btnexit = new DevComponents.DotNetBar.ButtonX();
+            this.btnShow_Data = new DevComponents.DotNetBar.ButtonX();
             this.label2 = new System.Windows.Forms.Label();
             this.lbltotalPoint = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.lblDate = new System.Windows.Forms.Label();
-            this.btnexit = new DevComponents.DotNetBar.ButtonX();
-            this.btnShow_Data = new DevComponents.DotNetBar.ButtonX();
             this.groupPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radGvReport)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radGvReport.MasterTemplate)).BeginInit();
@@ -63,8 +61,6 @@
             this.groupPanel1.Controls.Add(this.lbltotalPoint);
             this.groupPanel1.Controls.Add(this.label2);
             this.groupPanel1.Controls.Add(this.label4);
-            this.groupPanel1.Controls.Add(this.lblDate);
-            this.groupPanel1.Controls.Add(this.label6);
             this.groupPanel1.Controls.Add(this.label5);
             this.groupPanel1.Controls.Add(this.label1);
             this.groupPanel1.Controls.Add(this.txtPoint);
@@ -147,7 +143,7 @@
             this.radGvReport.MasterTemplate.AllowEditRow = false;
             this.radGvReport.MasterTemplate.AllowRowHeaderContextMenu = false;
             this.radGvReport.MasterTemplate.AllowRowReorder = true;
-            this.radGvReport.MasterTemplate.ViewDefinition = tableViewDefinition3;
+            this.radGvReport.MasterTemplate.ViewDefinition = tableViewDefinition2;
             this.radGvReport.Name = "radGvReport";
             this.radGvReport.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.radGvReport.Size = new System.Drawing.Size(906, 305);
@@ -242,6 +238,36 @@
             this.groupPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel2.TabIndex = 36;
             // 
+            // btnexit
+            // 
+            this.btnexit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnexit.BackColor = System.Drawing.Color.Transparent;
+            this.btnexit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnexit.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.btnexit.Image = ((System.Drawing.Image)(resources.GetObject("btnexit.Image")));
+            this.btnexit.Location = new System.Drawing.Point(3, 2);
+            this.btnexit.Name = "btnexit";
+            this.btnexit.Size = new System.Drawing.Size(103, 34);
+            this.btnexit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnexit.TabIndex = 37;
+            this.btnexit.Text = "بازگشت";
+            this.btnexit.Click += new System.EventHandler(this.Btnexit_Click);
+            // 
+            // btnShow_Data
+            // 
+            this.btnShow_Data.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnShow_Data.BackColor = System.Drawing.Color.Transparent;
+            this.btnShow_Data.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnShow_Data.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.btnShow_Data.Image = global::Patient_clinic.Properties.Resources.thin_0244_text_bullets_list;
+            this.btnShow_Data.Location = new System.Drawing.Point(796, 2);
+            this.btnShow_Data.Name = "btnShow_Data";
+            this.btnShow_Data.Size = new System.Drawing.Size(103, 34);
+            this.btnShow_Data.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnShow_Data.TabIndex = 35;
+            this.btnShow_Data.Text = "نمایش ";
+            this.btnShow_Data.Click += new System.EventHandler(this.BtnShow_Data_Click);
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -280,64 +306,6 @@
             this.label4.TabIndex = 38;
             this.label4.Text = "پاسخ‌های اشتباه :";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label6.Location = new System.Drawing.Point(515, 66);
-            this.label6.Name = "label6";
-            this.label6.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label6.Size = new System.Drawing.Size(43, 16);
-            this.label6.TabIndex = 38;
-            this.label6.Text = "تاریخ :";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label6.Click += new System.EventHandler(this.Label6_Click);
-            // 
-            // lblDate
-            // 
-            this.lblDate.AutoSize = true;
-            this.lblDate.BackColor = System.Drawing.Color.Transparent;
-            this.lblDate.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lblDate.Location = new System.Drawing.Point(421, 66);
-            this.lblDate.Name = "lblDate";
-            this.lblDate.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lblDate.Size = new System.Drawing.Size(80, 16);
-            this.lblDate.TabIndex = 38;
-            this.lblDate.Text = "..................";
-            this.lblDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblDate.Click += new System.EventHandler(this.Label6_Click);
-            // 
-            // btnexit
-            // 
-            this.btnexit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnexit.BackColor = System.Drawing.Color.Transparent;
-            this.btnexit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnexit.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.btnexit.Image = ((System.Drawing.Image)(resources.GetObject("btnexit.Image")));
-            this.btnexit.Location = new System.Drawing.Point(3, 2);
-            this.btnexit.Name = "btnexit";
-            this.btnexit.Size = new System.Drawing.Size(103, 34);
-            this.btnexit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnexit.TabIndex = 37;
-            this.btnexit.Text = "بازگشت";
-            this.btnexit.Click += new System.EventHandler(this.Btnexit_Click);
-            // 
-            // btnShow_Data
-            // 
-            this.btnShow_Data.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnShow_Data.BackColor = System.Drawing.Color.Transparent;
-            this.btnShow_Data.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnShow_Data.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.btnShow_Data.Image = global::Patient_clinic.Properties.Resources.thin_0244_text_bullets_list;
-            this.btnShow_Data.Location = new System.Drawing.Point(796, 2);
-            this.btnShow_Data.Name = "btnShow_Data";
-            this.btnShow_Data.Size = new System.Drawing.Size(103, 34);
-            this.btnShow_Data.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnShow_Data.TabIndex = 35;
-            this.btnShow_Data.Text = "نمایش ";
-            this.btnShow_Data.Click += new System.EventHandler(this.BtnShow_Data_Click);
             // 
             // frmReportNSTests
             // 
@@ -380,7 +348,5 @@
         private System.Windows.Forms.Label lbltotalPoint;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label lblDate;
     }
 }

@@ -35,8 +35,8 @@ namespace Patient_clinic.New_staff
 
         private void BtnReport_Click(object sender, EventArgs e)
         {
-            frmChooseReport frmChooseReport = new frmChooseReport();
-            frmChooseReport.ShowDialog();
+            frmReportNSTests frmReportNSTests = new frmReportNSTests();
+            frmReportNSTests.ShowDialog();
         }
     }
 }
