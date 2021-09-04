@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmChooseTest));
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.cmbTest = new DevComponents.DotNetBar.Controls.ComboBoxEx();
@@ -41,8 +42,10 @@
             this.line1 = new DevComponents.DotNetBar.Controls.Line();
             this.label1 = new System.Windows.Forms.Label();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.bpcalTestDate = new BPersianCalender.BPersianCalenderTextBox();
             this.btnTestStart = new DevComponents.DotNetBar.ButtonX();
             this.btnexit = new DevComponents.DotNetBar.ButtonX();
+            this.label6 = new System.Windows.Forms.Label();
             this.groupPanel1.SuspendLayout();
             this.groupPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -51,12 +54,14 @@
             // 
             this.groupPanel1.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel1.Controls.Add(this.bpcalTestDate);
             this.groupPanel1.Controls.Add(this.cmbTest);
             this.groupPanel1.Controls.Add(this.txtLast_name);
             this.groupPanel1.Controls.Add(this.txtFirst_name);
             this.groupPanel1.Controls.Add(this.txtNational_Code);
             this.groupPanel1.Controls.Add(this.label5);
             this.groupPanel1.Controls.Add(this.label4);
+            this.groupPanel1.Controls.Add(this.label6);
             this.groupPanel1.Controls.Add(this.label3);
             this.groupPanel1.Controls.Add(this.label2);
             this.groupPanel1.Controls.Add(this.line1);
@@ -96,6 +101,7 @@
             // 
             this.groupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel1.TabIndex = 0;
+            this.groupPanel1.Click += new System.EventHandler(this.GroupPanel1_Click);
             // 
             // cmbTest
             // 
@@ -217,7 +223,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("B Titr", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label1.Location = new System.Drawing.Point(230, 6);
+            this.label1.Location = new System.Drawing.Point(230, 9);
             this.label1.Name = "label1";
             this.label1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label1.Size = new System.Drawing.Size(86, 29);
@@ -265,6 +271,20 @@
             this.groupPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel2.TabIndex = 20;
             // 
+            // bpcalTestDate
+            // 
+            this.bpcalTestDate.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.bpcalTestDate.Location = new System.Drawing.Point(19, 15);
+            this.bpcalTestDate.Miladi = new System.DateTime(((long)(0)));
+            this.bpcalTestDate.Name = "bpcalTestDate";
+            this.bpcalTestDate.NowDateSelected = false;
+            this.bpcalTestDate.ReadOnly = true;
+            this.bpcalTestDate.SelectedDate = null;
+            this.bpcalTestDate.Shamsi = null;
+            this.bpcalTestDate.Size = new System.Drawing.Size(92, 23);
+            this.bpcalTestDate.TabIndex = 67;
+            this.bpcalTestDate.Text = "  /  /";
+            // 
             // btnTestStart
             // 
             this.btnTestStart.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
@@ -292,6 +312,19 @@
             this.btnexit.TabIndex = 25;
             this.btnexit.Text = "بازگشت";
             this.btnexit.Click += new System.EventHandler(this.Btnexit_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label6.Location = new System.Drawing.Point(115, 18);
+            this.label6.Name = "label6";
+            this.label6.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label6.Size = new System.Drawing.Size(34, 16);
+            this.label6.TabIndex = 44;
+            this.label6.Text = "تاریخ";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // frmChooseTest
             // 
@@ -332,5 +365,7 @@
         private DevComponents.DotNetBar.Controls.TextBoxX txtLast_name;
         private System.Windows.Forms.Label label5;
         private DevComponents.DotNetBar.Controls.ComboBoxEx cmbTest;
+        private BPersianCalender.BPersianCalenderTextBox bpcalTestDate;
+        private System.Windows.Forms.Label label6;
     }
 }
