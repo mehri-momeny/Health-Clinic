@@ -36,7 +36,7 @@ namespace Patient_clinic
         private void FrmQueries_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'health_clinicDataSet.MI_FollowUp_Questions' table. You can move, or remove it, as needed.
-            this.mI_FollowUp_QuestionsTableAdapter.Fill(this.health_clinicDataSet.MI_FollowUp_Questions);
+            //this.mI_FollowUp_QuestionsTableAdapter.Fill(this.health_clinicDataSet.MI_FollowUp_Questions);
             //radTxtNationalCode.Text = National_Code_;
             //radTxtArchive.Text = Archive_Number_;
             radTxtPatient.Text = Full_Name_;
