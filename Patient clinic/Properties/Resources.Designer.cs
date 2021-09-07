@@ -103,6 +103,16 @@ namespace Patient_clinic.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icon {
+            get {
+                object obj = ResourceManager.GetObject("icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Icons8_Windows_8_Healthcare_Clinic {
             get {
                 object obj = ResourceManager.GetObject("Icons8-Windows-8-Healthcare-Clinic", resourceCulture);
@@ -303,6 +313,26 @@ namespace Patient_clinic.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap thin_0336_disc_floppy_save_software {
+            get {
+                object obj = ResourceManager.GetObject("thin-0336_disc_floppy_save_software", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap thin_0336_disc_floppy_save_software1 {
+            get {
+                object obj = ResourceManager.GetObject("thin-0336_disc_floppy_save_software1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap thin_0375_screen_analytics_line_graph {
             get {
                 object obj = ResourceManager.GetObject("thin-0375_screen_analytics_line_graph", resourceCulture);
@@ -316,6 +346,26 @@ namespace Patient_clinic.Properties {
         internal static System.Drawing.Bitmap thin_0375_screen_analytics_line_graph1 {
             get {
                 object obj = ResourceManager.GetObject("thin-0375_screen_analytics_line_graph1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap thin_0382_graph_columns_statistics {
+            get {
+                object obj = ResourceManager.GetObject("thin-0382_graph_columns_statistics", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap thin_0382_graph_columns_statistics1 {
+            get {
+                object obj = ResourceManager.GetObject("thin-0382_graph_columns_statistics1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

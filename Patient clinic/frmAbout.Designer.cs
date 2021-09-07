@@ -216,7 +216,7 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::Patient_clinic.Properties.Resources.Healthcare_Clinic_icon;
+            this.pictureBox1.Image = global::Patient_clinic.Properties.Resources.icon;
             this.pictureBox1.Location = new System.Drawing.Point(9, 16);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(74, 68);
