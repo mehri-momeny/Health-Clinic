@@ -543,6 +543,8 @@ namespace Patient_clinic.health_education_indicators
             {
                 e.Handled = true;
             }
+
+            txttel.MaxLength = 11; // this will allow the user to enter only 11 digits
         }
 
         private void TxtRefTurn_KeyPress_1(object sender, KeyPressEventArgs e)
