@@ -34,6 +34,18 @@ namespace Patient_clinic
             get { return _patient_ID; }
             set { _patient_ID = value; }
         }
+        private static string _DateRange="";
+        public static string DateRange
+        {
+            get { return _DateRange; }
+            set { _DateRange = value; }
+        }
+        private static string ـSavePath = "";
+        public static string SavePath
+        {
+            get { return ـSavePath; }
+            set { ـSavePath = value; }
+        }
 
         private static int localConnettion = -1;
         public static string User_ID { get; private set; }
