@@ -49,7 +49,7 @@ namespace Patient_clinic
             adp = new SqlDataAdapter("SP_PAYESH_Clinic \'" + YearMonth + "\'," + txtTotalNum.Text, con);  //call Stored Procedure
             dt = new DataTable();
             adp.Fill(dt);
-            worksheet.Cells[0, 10].Value = "فرم پایش کلینیک های پرستاری آموزش سلامت در سال 1400 بیمارستان تخصصی چشم پزشکی خاتم الانبیاء (ص) مشهد :";
+            worksheet.Cells[0, 1].Value = "فرم پایش کلینیک های پرستاری آموزش سلامت در سال 1400 بیمارستان تخصصی چشم پزشکی خاتم الانبیاء (ص) مشهد :";
             #region ColumnName
             dt.Columns["Patient_Count"].ColumnName = "تعداد کل مراجعین ";
             dt.Columns["Patient_PERCENT"].ColumnName = " نسبت تعداد مراجعین به کلینیک پرستاری به کل بیماران مراجعه کننده به درمانگاه درشیفت های فعالیت کلینیک";
@@ -82,7 +82,7 @@ namespace Patient_clinic
                     ColumnHeaders = true,
                     StartRow = 2
                 });
-
+            worksheet.ViewOptions.ShowColumnsFromRightToLeft = true;   //layout right to left
             SaveFileDialog sf = new SaveFileDialog();
             // Feed the dummy name to the save dialog
             sf.FileName = "Clinic_Report";
