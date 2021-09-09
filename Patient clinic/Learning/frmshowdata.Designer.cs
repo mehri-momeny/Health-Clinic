@@ -59,6 +59,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btn_filter = new System.Windows.Forms.Button();
             this.lblCount = new System.Windows.Forms.Label();
+            this.btnexcel = new DevComponents.DotNetBar.ButtonX();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -341,7 +342,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label1.Location = new System.Drawing.Point(286, 462);
+            this.label1.Location = new System.Drawing.Point(396, 462);
             this.label1.Name = "label1";
             this.label1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label1.Size = new System.Drawing.Size(43, 16);
@@ -364,12 +365,26 @@
             this.lblCount.AutoSize = true;
             this.lblCount.BackColor = System.Drawing.Color.Transparent;
             this.lblCount.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lblCount.Location = new System.Drawing.Point(245, 462);
+            this.lblCount.Location = new System.Drawing.Point(360, 462);
             this.lblCount.Name = "lblCount";
             this.lblCount.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lblCount.Size = new System.Drawing.Size(43, 16);
+            this.lblCount.Size = new System.Drawing.Size(20, 16);
             this.lblCount.TabIndex = 41;
-            this.lblCount.Text = "تعداد :";
+            this.lblCount.Text = "...";
+            // 
+            // btnexcel
+            // 
+            this.btnexcel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnexcel.BackColor = System.Drawing.Color.Transparent;
+            this.btnexcel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnexcel.Image = ((System.Drawing.Image)(resources.GetObject("btnexcel.Image")));
+            this.btnexcel.Location = new System.Drawing.Point(234, 454);
+            this.btnexcel.Name = "btnexcel";
+            this.btnexcel.Size = new System.Drawing.Size(105, 32);
+            this.btnexcel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnexcel.TabIndex = 38;
+            this.btnexcel.Text = "خروجی اکسل";
+            this.btnexcel.Click += new System.EventHandler(this.Btnexcel_Click);
             // 
             // frmshowdata
             // 
@@ -389,12 +404,14 @@
             this.Controls.Add(this.txtlastnamesearch);
             this.Controls.Add(this.txtFirstnamesearch);
             this.Controls.Add(this.btnexit);
+            this.Controls.Add(this.btnexcel);
             this.Controls.Add(this.btnReport);
             this.Controls.Add(this.btndelete);
             this.Controls.Add(this.btnNwRef);
             this.Controls.Add(this.btnedit);
             this.Controls.Add(this.dgvList);
             this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmshowdata";
@@ -440,5 +457,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_filter;
         private System.Windows.Forms.Label lblCount;
+        private DevComponents.DotNetBar.ButtonX btnexcel;
     }
 }

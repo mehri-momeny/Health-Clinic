@@ -15,11 +15,13 @@ using DocumentFormat.OpenXml.Spreadsheet;
 using System.IO;
 using Stimulsoft.Report;
 using System.Globalization;
+using GemBox.Spreadsheet;
 
 namespace Patient_clinic
 {
     public partial class frmshowdata : Form
     {
+
         public frmshowdata()
         {
             InitializeComponent();
@@ -27,7 +29,8 @@ namespace Patient_clinic
         SqlConnection con = Program.CreateConnection(); //new SqlConnection("Data Source = 'kh-e0211' ;initial catalog =Health_clinic ; integrated security=true");
         SqlCommand cmd = new SqlCommand();
         PersianCalendar p = new PersianCalendar();
-
+        DataTable dt = new DataTable();
+        SqlDataAdapter adp = new SqlDataAdapter();
         private void Frmshowdata_Load(object sender, EventArgs e)
         {
             Dgv_load();
@@ -37,12 +40,28 @@ namespace Patient_clinic
         }
         void Dgv_load()
         {
-            SqlDataAdapter adp = new SqlDataAdapter();
             con.Open();
             DataSet ds = new DataSet();
             adp.SelectCommand = new SqlCommand();
             adp.SelectCommand.Connection = con;
-            adp.SelectCommand.CommandText = "SELECT * FROM[dbo].[Patients] order by Patient_ID";
+            //adp.SelectCommand.CommandText = "SELECT * FROM[dbo].[Patients] order by Patient_ID";
+            adp.SelectCommand.CommandText = "select P.[Patient_ID],[Patient_ID_code],[First_name],[Last_name],[national_code],[Father_name],[Year_Birth_date],[Age] "+
+                                        " ,[Tel],e.Title as [Education], I.Name AS Insurer, IT.Description AS Insurance_type,[Patient_partner], MI_Diagnose.name AS Diagnose " +
+                                        " , CASE WHEN[History] = 0 THEN 'سابقه بیماری ندارد' " +
+                                        "       WHEN[History] = 1 THEN 'سابقه بیماری دارد' " +
+                                        "    END as[History] " +
+                                        "  ,[OtherDisease],[Doctor],[Ref_Date],[Ref_type],[Ref_turn],[Train_type] " +
+                                        "  , [care_before_surgery] " +
+                                        "   ,[care_after_surgery] " +
+                                        "  , [care_disease_type] " +
+                                        "  ,[care_background_disease] " +
+                                        "  ,[visit_description],[Learn_asses],[Instructor_name] " +
+                                    "from[dbo].[Patients] P " +
+                                    "join MI_Diagnose on Diagnose = MI_Diagnose.ID " +
+                                    "join MI_Insurers as I on P.Insurer = I.Insurer_Code " +
+                                    "join MI_InsuranceTypes IT on p.Insurance_type = IT.Type_Code " +
+                                    "join MI_Education E on p.Education = e.code";
+
             adp.Fill(ds, "Patients");
             dgvList.DataSource = ds;
             dgvList.DataMember = "Patients";
@@ -101,11 +120,11 @@ namespace Patient_clinic
 
         private void TxtFirstnamesearch_TextChanged(object sender, EventArgs e)
         {
-            DataTable dt;
-            SqlDataAdapter adp;
+            //DataTable dt;
+            //SqlDataAdapter adp;
             con.Open();
             adp = new SqlDataAdapter("select * from [dbo].[Patients] where First_name like '" + txtFirstnamesearch.Text + "%'", con);
-            dt = new DataTable();
+            //dt = new DataTable();
             adp.Fill(dt);
             dgvList.DataSource = dt;
             Convert_column_name(dgvList);
@@ -115,11 +134,11 @@ namespace Patient_clinic
 
         private void Txtlastnamesearch_TextChanged(object sender, EventArgs e)
         {
-            DataTable dt;
-            SqlDataAdapter adp;
+            //DataTable dt;
+            //SqlDataAdapter adp;
             con.Open();
             adp = new SqlDataAdapter("select * from [dbo].[Patients] where last_name like '" + txtlastnamesearch.Text + "%'", con);
-            dt = new DataTable();
+            //dt = new DataTable();
             adp.Fill(dt);
             dgvList.DataSource = dt;
             Convert_column_name(dgvList);
@@ -129,11 +148,11 @@ namespace Patient_clinic
 
         private void Txtnationalcodesearch_TextChanged(object sender, EventArgs e)
         {
-            DataTable dt;
-            SqlDataAdapter adp;
+            //DataTable dt;
+            //SqlDataAdapter adp;
             con.Open();
             adp = new SqlDataAdapter("select * from [dbo].[Patients] where national_code like '" + txtnationalcodesearch.Text + "%'", con);
-            dt = new DataTable();
+            //dt = new DataTable();
             adp.Fill(dt);
             dgvList.DataSource = dt;
             Convert_column_name(dgvList);
@@ -142,11 +161,11 @@ namespace Patient_clinic
 
         private void Txtfathername_TextChanged(object sender, EventArgs e)
         {
-            DataTable dt;
-            SqlDataAdapter adp;
+            //DataTable dt;
+            //SqlDataAdapter adp;
             con.Open();
             adp = new SqlDataAdapter("select * from [dbo].[Patients] where father_name like '" + txtfathername.Text + "%'", con);
-            dt = new DataTable();
+            //dt = new DataTable();
             adp.Fill(dt);
             dgvList.DataSource = dt;
             Convert_column_name(dgvList);
@@ -332,6 +351,125 @@ namespace Patient_clinic
             con.Close();
             lblCount.Text = dgvList.Rows.Count.ToString();
 
+        }
+
+        private void Btnexcel_Click(object sender, EventArgs e)
+        {
+            frmReportRange frmReportRange = new frmReportRange();
+            frmReportRange.ShowDialog();
+            DataTable dt = new DataTable();
+            SqlDataAdapter adp = new SqlDataAdapter();
+            if (Program.SavePath != "" && Program.DateRange != "")
+            {
+                SpreadsheetInfo.SetLicense("FREE-LIMITED-KEY");
+                var workbook = new ExcelFile();
+                var worksheet = workbook.Worksheets.Add("Patients_Data");
+
+                if (con.State == ConnectionState.Closed) con.Open();
+                adp = new SqlDataAdapter("select P.[Patient_ID],[Patient_ID_code],[First_name],[Last_name],[national_code],[Father_name],[Year_Birth_date],[Age] "+
+                                        " ,[Tel],e.Title as [Education], I.Name AS Insurer, IT.Description AS Insurance_type,[Patient_partner], MI_Diagnose.name AS Diagnose " +
+                                        " , CASE WHEN[History] = 0 THEN 'سابقه بیماری ندارد' " +
+                                        "       WHEN[History] = 1 THEN 'سابقه بیماری دارد' " +
+                                        "    END as[History] " +
+                                        "  ,[OtherDisease],[Doctor],[Ref_Date],[Ref_type],[Ref_turn],[Train_type] " +
+                                        "  , CASE WHEN[care_before_surgery] = 0 THEN 'خیر' " +
+                                        "        WHEN[care_before_surgery] = 1 THEN 'بلی' END AS[care_before_surgery] " +
+                                        "   , CASE WHEN[care_after_surgery] = 0 THEN 'خیر' " +
+                                        "        WHEN[care_after_surgery] = 1 THEN 'بلی' END AS[care_after_surgery] " +
+                                        "  , CASE WHEN[care_disease_type] = 0 THEN 'خیر' " +
+                                        "        WHEN[care_disease_type] = 1 THEN 'بلی' END AS[care_disease_type] " +
+                                        "  , CASE WHEN[care_background_disease] = 0 THEN 'خیر' " +
+                                        "        WHEN[care_background_disease] = 1 THEN 'بلی' END AS[care_background_disease] " +
+                                        "  ,[visit_description],[Learn_asses],[Instructor_name] " +
+                                    "from[dbo].[Patients] P " +
+                                    "join MI_Diagnose on Diagnose = MI_Diagnose.ID " +
+                                    "join MI_Insurers as I on P.Insurer = I.Insurer_Code " +
+                                    "join MI_InsuranceTypes IT on p.Insurance_type = IT.Type_Code " +
+                                    "join MI_Education E on p.Education = e.code " +
+                                    "where Ref_Date " + Program.DateRange, con);
+                adp.Fill(dt);
+                dgvList.DataSource = dt;
+
+                Excel_column_name(dt);
+                // Insert DataTable to an Excel worksheet.
+                worksheet.InsertDataTable(dt,
+                    new InsertDataTableOptions()
+                    {
+                        ColumnHeaders = true,
+                        StartRow = 0
+                    });
+                worksheet.ViewOptions.ShowColumnsFromRightToLeft = true;   //layout right to left
+
+
+                #region Set Excel Column Option
+                worksheet.Columns[13].Width = 10000;
+                //worksheet.Columns[13].AutoFit();
+
+                #endregion
+
+
+
+                //var excelCell = worksheet.Rows[e.CurrentRowIndex].Cells[e.CurrentColumnIndex];
+                //if (excelCell.Value != null && excelCell.Value.ToString().ToUpper() == "TRUE")
+                //{
+                //    excelCell.Value = "Yes";
+                //}
+                //if (excelCell.Value != null && excelCell.Value.ToString().ToUpper() == "FALSE")
+                //{
+                //    excelCell.Value = String.Empty;
+                //}
+
+                try
+                {
+                    workbook.Save(Program.SavePath + "Report.xlsx");
+                    MessageBox.Show("فایل اکسل با موفقیت در محل انتخاب شده به آدرس زیر ذخیره گردید. \n" + Program.SavePath, "", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show("ذخیره فایل اکسل با خطا مواجه شده است. \n اگر فایل اکسل از قبل باز هست لطفا ابتدا فایل را ببندید سپس امتحان بفرمایید. \n" + ex.Message, "خطا", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+                con.Close();
+
+            }
+            else
+            {
+                MessageBox.Show("مشکلی پیش آمده است مجددا امتحان کنید", "خطا", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        void Excel_column_name(DataTable dt)
+        {
+            dt.Columns["Patient_ID"].ColumnName = "شناسه";
+            dt.Columns["Patient_ID_code"].ColumnName = "کد بیمار";
+            dt.Columns["First_name"].ColumnName = "نام";
+            dt.Columns["Last_name"].ColumnName = "نام خانوادگی";
+            dt.Columns["national_code"].ColumnName = "کد ملی";
+            dt.Columns["Father_name"].ColumnName = "نام پدر";
+            dt.Columns["Year_Birth_date"].ColumnName = "سال تولد";
+            dt.Columns["Age"].ColumnName = "سن";
+            dt.Columns["Tel"].ColumnName = "تلفن";
+            dt.Columns["Diagnose"].ColumnName = "تشخیص";
+            dt.Columns["History"].ColumnName = "سابقه بیماری";
+            dt.Columns["OtherDisease"].ColumnName = "سایر بیماریها";
+            dt.Columns["Doctor"].ColumnName = "پزشک معالج";
+            dt.Columns["Insurer"].ColumnName = "بیمه کننده ";
+            dt.Columns["Insurance_type"].ColumnName = "نوع بیمه";
+            dt.Columns["Education"].ColumnName = "تحصیلات";
+            dt.Columns["Patient_partner"].ColumnName = "همراهی بیمار";
+            dt.Columns["Ref_Date"].ColumnName = "تاریخ مراجعه";
+            dt.Columns["Ref_type"].ColumnName = "نحوه ارجاع";
+            dt.Columns["Ref_turn"].ColumnName = "نوبت مراجعه";
+            dt.Columns["Learn_asses"].ColumnName = "ارزیابی آموزش";
+            dt.Columns["Instructor_name"].ColumnName = "آموزش دهنده";
+            dt.Columns["visit_description"].ColumnName = "توضیحات";
+            dt.Columns["Train_type"].ColumnName = "شیوه ارائه آموزش";
+            dt.Columns["care_before_surgery"].ColumnName = "مراقبت قبل از عمل";
+            dt.Columns["care_after_surgery"].ColumnName = "مراقبت بعد از عمل";
+            dt.Columns["care_disease_type"].ColumnName = "نوع بیماری,نحوه درمان,مراقبت";
+            dt.Columns["care_background_disease"].ColumnName = "آموزش درمورد بیماری‌های زمینه‌ای";
+
+            //return dt;
         }
     }
 }
