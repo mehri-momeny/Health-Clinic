@@ -49,7 +49,7 @@ namespace Patient_clinic.Follow_up
             adp = new SqlDataAdapter("SP_FOLLOW_UP_REPORT \'" + YearMonth + "\',"+ txtTotalNum.Text, con);  //call Stored Procedure
             dt = new DataTable();
             adp.Fill(dt);
-            worksheet.Cells[0, 10].Value = "فرم پایش فالوآپ بيماران در کلینیک پرستاری آموزش سلامت درسه ماهه اول سال 1400 بیمارستان تخصصي چشم پزشكي خاتم الانبياء :";
+            worksheet.Cells[0, 1].Value = "فرم پایش فالوآپ بيماران در کلینیک پرستاری آموزش سلامت درسه ماهه اول سال 1400 بیمارستان تخصصي چشم پزشكي خاتم الانبياء :";
             dt.Columns["FOLLOWUP_COUNT"].ColumnName = " تعداد بيماران فالوآپ شده گلوکوم و پيوند قرنيه";
             dt.Columns["FOLLOW_UP_PERCENT"].ColumnName = "درصد بيماران فالوآپ شده";
             dt.Columns["READMITION_COUNT"].ColumnName = "تعداد بستري مجدد ";
@@ -65,7 +65,7 @@ namespace Patient_clinic.Follow_up
                     ColumnHeaders = true,
                     StartRow = 2
                 });
-
+            worksheet.ViewOptions.ShowColumnsFromRightToLeft = true;   //layout right to left
             SaveFileDialog sf = new SaveFileDialog();
             // Feed the dummy name to the save dialog
             sf.FileName = "FollowUp_Report";

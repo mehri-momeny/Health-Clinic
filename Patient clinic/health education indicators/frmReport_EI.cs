@@ -202,7 +202,7 @@ namespace Patient_clinic.health_education_indicators
             dt = new DataTable();
             adp.Fill(dt);
 
-            worksheet.Cells[0, 2].Value = " پایش سوالات فرم‌های ارزیابی شاخص های آموزش سلامت  "+Program.Clinic_Name+" در "+ cmbmonth.Text.Substring(3) + " ماه سال  "+txtYear.Text +" که نمرات ضعیف یا متوسط کسب شده است :";
+            worksheet.Cells[0, 1].Value = " پایش سوالات فرم‌های ارزیابی شاخص های آموزش سلامت  "+Program.Clinic_Name+" در "+ cmbmonth.Text.Substring(3) + " ماه سال  "+txtYear.Text +" که نمرات ضعیف یا متوسط کسب شده است :";
 
             dt.Columns["SECTION_NAME"].ColumnName = "عنوان بخش";
             dt.Columns["FORM_NAME"].ColumnName = "عنوان فرم";
@@ -218,7 +218,7 @@ namespace Patient_clinic.health_education_indicators
                     ColumnHeaders = true,
                     StartRow = 2
                 });
-
+            worksheet.ViewOptions.ShowColumnsFromRightToLeft = true;   //layout right to left
             // set width of column 
             worksheet.Columns["B"].Width = 9000;  //FORM_NAME
             worksheet.Columns["C"].Width = 35000; //QUESTION
