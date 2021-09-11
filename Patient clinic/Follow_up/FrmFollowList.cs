@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GemBox.Spreadsheet;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,7 +22,7 @@ namespace Patient_clinic
         //string Today = Main_Functions.Get_Today_Shamsi();
         System.Globalization.PersianCalendar p = new System.Globalization.PersianCalendar();
         bool Active_Item = false;
-        DataTable Surgeries_Datatable = new DataTable();
+        //DataTable Surgeries_Datatable = new DataTable();
         public static GridViewRowInfo SelectedRow { get; set; }
         public FrmFollowList()
         {
@@ -30,20 +31,20 @@ namespace Patient_clinic
             this.radGVFollow_List.TableElement.RowHeight = 35;
         }
 
-        void Load_ComboBoxes_Datasources()
-        {
-            con.Open();
-            //Diagnose combobox
-            string query = "SELECT [Id],[Name]  FROM [dbo].[MI_Surgery_type]";
-            SqlDataAdapter da = new SqlDataAdapter(query, con);
+        //void Load_ComboBoxes_Datasources()
+        //{
+        //    con.Open();
+        //    //Diagnose combobox
+        //    string query = "SELECT [Id],[Name]  FROM [dbo].[MI_Surgery_type]";
+        //    SqlDataAdapter da = new SqlDataAdapter(query, con);
 
-            DataSet ds = new DataSet();
-            da.Fill(ds, "Surgery");
-            con.Close();
-            Surgeries_Datatable =  ds.Tables["Surgery"];
-        }
+        //    DataSet ds = new DataSet();
+        //    da.Fill(ds, "Surgery");
+        //    con.Close();
+        //    Surgeries_Datatable = ds.Tables["Surgery"];
+        //}
 
-        void Dgv_load(string StartDate,string EndDate)
+        void Dgv_load(string StartDate, string EndDate)
         {
 
             SqlDataAdapter adp = new SqlDataAdapter();
@@ -53,33 +54,66 @@ namespace Patient_clinic
             adp.SelectCommand.Connection = con;
             if (Active_Item)
             {
-                adp.SelectCommand.CommandText = "SELECT PCD.*,FL.FOLLOWUP_DATE,FL.FLAG,FL.Follow_turn FROM[FU_FOLLOW_LIST] FL " +
-                                         "JOIN " +
-                                         "    (SELECT PD.*, PC.FOLLOW_ID, PC.ADMITION_DATE, PC.DISCHARGE_DATE, PC.ARCHIVE_NUMBER, PC.DOC_NAME, PC.REF_TURN, PC.SURGERY_TYPE " +
-                                         "     FROM FU_PATIENT_DEMOGRAPHIC PD " +
-                                         "     INNER JOIN FU_FOLLOW_PATIENT_CLINICAL PC " +
-                                         "     ON PD.PATIENT_ID = PC.PATIENT_ID) PCD " +
-                                         "  ON PCD.PATIENT_ID = FL.PATIENT_ID AND PCD.FOLLOW_ID = FL.FOLLOW_ID " +
-                                         "WHERE FL.FOLLOWUP_DATE between  \'" + StartDate + "\' and \'" + EndDate + "\' AND FL.FLAG = 0";
+
+                adp.SelectCommand.CommandText = "SELECT PCD.*,FL.FOLLOWUP_DATE, " +
+                                                "  CASE " +
+                                                "    WHEN FL.FLAG = -1 THEN 'ناموفق' " +
+                                                "    WHEN FL.FLAG = 1 THEN 'موفق' " +
+                                                "    WHEN FL.FLAG = 2 THEN 'تکرار در تاریخ دیگر' " +
+                                                "    ELSE 'در صف پیگیری' " +
+                                                "  END FLAG_TITLE ,FLAG, FL.Follow_turn " +
+                                                "FROM[FU_FOLLOW_LIST] FL " +
+                                                "JOIN(SELECT PD.*, PC.FOLLOW_ID, PC.ADMITION_DATE, PC.DISCHARGE_DATE, PC.ARCHIVE_NUMBER, PC.DOC_NAME, PC.REF_TURN, S.Name AS SURGERY_TYPE " +
+                                                "             FROM FU_PATIENT_DEMOGRAPHIC PD " +
+                                                "               INNER JOIN FU_FOLLOW_PATIENT_CLINICAL PC  ON PD.PATIENT_ID = PC.PATIENT_ID " +
+                                                "               JOIN MI_Surgery_type S ON PC.Surgery_Type = S.Id) PCD   ON PCD.PATIENT_ID = FL.PATIENT_ID AND PCD.FOLLOW_ID = FL.FOLLOW_ID " +
+                                                "WHERE FL.FOLLOWUP_DATE  between  \'" + StartDate + "\' and \'" + EndDate + "\' AND FL.FLAG = 0";
+
+                //adp.SelectCommand.CommandText = "SELECT PCD.*,FL.FOLLOWUP_DATE,FL.FLAG,FL.Follow_turn FROM[FU_FOLLOW_LIST] FL " +
+                //                         "JOIN " +
+                //                         "    (SELECT PD.*, PC.FOLLOW_ID, PC.ADMITION_DATE, PC.DISCHARGE_DATE, PC.ARCHIVE_NUMBER, PC.DOC_NAME, PC.REF_TURN, PC.SURGERY_TYPE " +
+                //                         "     FROM FU_PATIENT_DEMOGRAPHIC PD " +
+                //                         "     INNER JOIN FU_FOLLOW_PATIENT_CLINICAL PC " +
+                //                         "     ON PD.PATIENT_ID = PC.PATIENT_ID) PCD " +
+                //                         "  ON PCD.PATIENT_ID = FL.PATIENT_ID AND PCD.FOLLOW_ID = FL.FOLLOW_ID " +
+                //                         "WHERE FL.FOLLOWUP_DATE between  \'" + StartDate + "\' and \'" + EndDate + "\' AND FL.FLAG = 0";
 
                 adp.Fill(ds, "Patients");
             }
             else
             {
-                adp.SelectCommand.CommandText = "SELECT PCD.*,FL.FOLLOWUP_DATE,FL.FLAG,FL.Follow_turn FROM[FU_FOLLOW_LIST] FL " +
-                                         "JOIN " +
-                                         "    (SELECT PD.*, PC.FOLLOW_ID, PC.ADMITION_DATE, PC.DISCHARGE_DATE, PC.ARCHIVE_NUMBER, PC.DOC_NAME, PC.REF_TURN, PC.SURGERY_TYPE " +
-                                         "     FROM FU_PATIENT_DEMOGRAPHIC PD " +
-                                         "     INNER JOIN FU_FOLLOW_PATIENT_CLINICAL PC " +
-                                         "     ON PD.PATIENT_ID = PC.PATIENT_ID) PCD " +
-                                         "  ON PCD.PATIENT_ID = FL.PATIENT_ID AND PCD.FOLLOW_ID = FL.FOLLOW_ID " +
-                                         "WHERE FL.FOLLOWUP_DATE  between  \'" + StartDate + "\' and \'" + EndDate + "\'";
+
+                adp.SelectCommand.CommandText = "SELECT PCD.*,FL.FOLLOWUP_DATE, " +
+                                                "  CASE " +
+                                                "    WHEN FL.FLAG = -1 THEN 'ناموفق' " +
+                                                "    WHEN FL.FLAG = 1 THEN 'موفق' " +
+                                                "    WHEN FL.FLAG = 2 THEN 'تکرار در تاریخ دیگر' " +
+                                                "    ELSE 'در صف پیگیری' " +
+                                                "  END FLAG_TITLE ,FLAG, FL.Follow_turn " +
+                                                "FROM[FU_FOLLOW_LIST] FL " +
+                                                "JOIN(SELECT PD.*, PC.FOLLOW_ID, PC.ADMITION_DATE, PC.DISCHARGE_DATE, PC.ARCHIVE_NUMBER, PC.DOC_NAME, PC.REF_TURN, S.Name AS SURGERY_TYPE " +
+                                                "             FROM FU_PATIENT_DEMOGRAPHIC PD " +
+                                                "               INNER JOIN FU_FOLLOW_PATIENT_CLINICAL PC  ON PD.PATIENT_ID = PC.PATIENT_ID " +
+                                                "               JOIN MI_Surgery_type S ON PC.Surgery_Type = S.Id) PCD   ON PCD.PATIENT_ID = FL.PATIENT_ID AND PCD.FOLLOW_ID = FL.FOLLOW_ID " +
+                                                "WHERE FL.FOLLOWUP_DATE  between  \'" + StartDate + "\' and \'" + EndDate + "\'";
+
+
+                //adp.SelectCommand.CommandText = "SELECT PCD.*,FL.FOLLOWUP_DATE,FL.FLAG,FL.Follow_turn FROM[FU_FOLLOW_LIST] FL " +
+                //                         "JOIN " +
+                //                         "    (SELECT PD.*, PC.FOLLOW_ID, PC.ADMITION_DATE, PC.DISCHARGE_DATE, PC.ARCHIVE_NUMBER, PC.DOC_NAME, PC.REF_TURN, PC.SURGERY_TYPE " +
+                //                         "     FROM FU_PATIENT_DEMOGRAPHIC PD " +
+                //                         "     INNER JOIN FU_FOLLOW_PATIENT_CLINICAL PC " +
+                //                         "     ON PD.PATIENT_ID = PC.PATIENT_ID) PCD " +
+                //                         "  ON PCD.PATIENT_ID = FL.PATIENT_ID AND PCD.FOLLOW_ID = FL.FOLLOW_ID " +
+                //                         "WHERE FL.FOLLOWUP_DATE  between  \'" + StartDate + "\' and \'" + EndDate + "\'";
 
                 adp.Fill(ds, "Patients");
             }
             radGVFollow_List.DataSource = ds;
             radGVFollow_List.DataMember = "Patients";
             Convert_column_name(radGVFollow_List);
+            radGVFollow_List.Columns["FLAG"].IsVisible = false;
+            radGVFollow_List.Columns["InsertLog"].IsVisible = false;
             con.Close();
 
         }
@@ -104,7 +138,8 @@ namespace Patient_clinic
                 this.radtxtName.Text = Main_Functions.GetSafeString(currentRow.Cells["First_name"].Value + " " + currentRow.Cells["Last_name"].Value);
                 this.radtxtNational_Code.Text = Main_Functions.GetSafeString(currentRow.Cells["national_code"].Value);
                 this.radTxtAge.Text = (p.GetYear(DateTime.Now) - Convert.ToInt32(currentRow.Cells["Year_Birth_date"].Value)).ToString();
-                this.radTxtSurgery_type.Text = Surgeries_Datatable.Select("Id ="+ Convert.ToInt32(currentRow.Cells["Surgery_Type"].Value))[0][1].ToString();
+                this.radTxtSurgery_type.Text = currentRow.Cells["Surgery_Type"].Value.ToString();
+                    //Surgeries_Datatable.Select("Id =" + Convert.ToInt32(currentRow.Cells["Surgery_Type"].Value))[0][1].ToString();
                 //if (Convert.ToInt32(currentRow.Cells["Surgery_Type"].Value) == 1)
                 //{
                 //    this.radTxtSurgery_type.Text = "پیوند قرنیه";
@@ -175,16 +210,18 @@ namespace Patient_clinic
         {
 
             dgvList.Columns["Patient_ID"].HeaderText = "کد بیمار";
-            dgvList.Columns["Patient_ID"].Width = 45;
+            dgvList.Columns["Patient_ID"].WrapText = true;
+            dgvList.Columns["Patient_ID"].Width = 35;
             dgvList.Columns["First_name"].HeaderText = "نام";
+            dgvList.Columns["First_name"].Width = 80;
             dgvList.Columns["Last_name"].HeaderText = "نام خانوادگی";
-            dgvList.Columns["Last_name"].Width = 100;
+            dgvList.Columns["Last_name"].Width = 110;
             dgvList.Columns["national_code"].HeaderText = "کد ملی";
             dgvList.Columns["national_code"].Width = 80;
             dgvList.Columns["Year_Birth_date"].HeaderText = "تولد";
-            dgvList.Columns["Year_Birth_date"].Width = 40;
+            dgvList.Columns["Year_Birth_date"].Width = 35;
             dgvList.Columns["Tel"].HeaderText = "تلفن";
-            dgvList.Columns["Tel"].Width = 75;
+            dgvList.Columns["Tel"].Width = 80;
             dgvList.Columns["Follow_ID"].HeaderText = "کد پیگیری";
             dgvList.Columns["Follow_ID"].Width = 40;
             dgvList.Columns["Follow_ID"].WrapText = true;
@@ -195,7 +232,7 @@ namespace Patient_clinic
             dgvList.Columns["ref_turn"].Width = 45;
             dgvList.Columns["ref_turn"].WrapText = true;
             dgvList.Columns["Doc_name"].HeaderText = "پزشک";
-            dgvList.Columns["Doc_name"].Width = 60;
+            dgvList.Columns["Doc_name"].Width = 75;
             dgvList.Columns["Admition_Date"].HeaderText = "تاریخ بستری";
             dgvList.Columns["Admition_Date"].Width = 75;
             dgvList.Columns["Discharge_Date"].HeaderText = "تاریخ نرخیص";
@@ -204,12 +241,12 @@ namespace Patient_clinic
             dgvList.Columns["Surgery_Type"].WrapText = true;
             dgvList.Columns["Surgery_Type"].Width = 40;
             dgvList.Columns["FollowUp_Date"].HeaderText = "تاریخ پیگیری";
-            dgvList.Columns["FollowUp_Date"].Width = 75;
+            dgvList.Columns["FollowUp_Date"].Width = 70;
             dgvList.Columns["Follow_turn"].HeaderText = "نوبت پیگیری";
-            dgvList.Columns["Follow_turn"].Width = 45;
+            dgvList.Columns["Follow_turn"].Width = 40;
             dgvList.Columns["Follow_turn"].WrapText = true;
-            dgvList.Columns["Flag"].HeaderText = "نتیجه";
-            dgvList.Columns["Flag"].Width = 35;
+            dgvList.Columns["FLAG_TITLE"].HeaderText = "نتیجه";
+            dgvList.Columns["FLAG_TITLE"].Width = 40;
         }
         //---------------//
 
@@ -256,9 +293,9 @@ namespace Patient_clinic
             }
             else
             {
-                FrmQueries frmQueries = new FrmQueries(int.Parse(SelectedRow.Cells["Surgery_Type"].Value.ToString()), SelectedRow.Cells["Patient_ID"].Value.ToString(), SelectedRow.Cells["Follow_ID"].Value.ToString(), SelectedRow.Cells["First_name"].Value.ToString()+" "+ SelectedRow.Cells["Last_name"].Value.ToString(),(int)(SelectedRow.Cells["Follow_turn"].Value));  //مقدار دهی میشود بر اساس نوع فالوآپ
+                FrmQueries frmQueries = new FrmQueries(int.Parse(SelectedRow.Cells["Surgery_Type"].Value.ToString()), SelectedRow.Cells["Patient_ID"].Value.ToString(), SelectedRow.Cells["Follow_ID"].Value.ToString(), SelectedRow.Cells["First_name"].Value.ToString() + " " + SelectedRow.Cells["Last_name"].Value.ToString(), (int)(SelectedRow.Cells["Follow_turn"].Value));  //مقدار دهی میشود بر اساس نوع فالوآپ
                 frmQueries.ShowDialog();
-                Dgv_load(bpcalDate.Text,bpCalUntil.Text);
+                Dgv_load(bpcalDate.Text, bpCalUntil.Text);
                 change_selected_row(this.radGVFollow_List.CurrentRow);
             }
         }
@@ -319,7 +356,7 @@ namespace Patient_clinic
 
         private void FrmFollowList_Load(object sender, EventArgs e)
         {
-            Load_ComboBoxes_Datasources();
+            //Load_ComboBoxes_Datasources();
             bpcalDate.Today_Click(null, null);
             bpCalUntil.Today_Click(null, null);
             //Dgv_load(bpcalDate.Text);
@@ -530,6 +567,94 @@ namespace Patient_clinic
                         break;
                     }
             }
+        }
+
+        private void Btnexcel_Click(object sender, EventArgs e)
+        {
+            frmReportRange frmReportRange = new frmReportRange();
+            frmReportRange.ShowDialog();
+            DataTable dt = new DataTable();
+            SqlDataAdapter adp = new SqlDataAdapter();
+            if (Program.SavePath != "" && Program.DateRange != "")
+            {
+                SpreadsheetInfo.SetLicense("FREE-LIMITED-KEY");
+                var workbook = new ExcelFile();
+                var worksheet = workbook.Worksheets.Add("Follow_List");
+
+                if (con.State == ConnectionState.Closed) con.Open();
+                adp = new SqlDataAdapter("SELECT PCD.*,FL.FOLLOWUP_DATE, " +
+                                                "  CASE " +
+                                                "    WHEN FL.FLAG = -1 THEN 'ناموفق' " +
+                                                "    WHEN FL.FLAG = 1 THEN 'موفق' " +
+                                                "    WHEN FL.FLAG = 2 THEN 'تکرار در تاریخ دیگر' " +
+                                                "    ELSE 'در صف پیگیری' " +
+                                                "  END FLAG , FL.Follow_turn " +
+                                                "FROM[FU_FOLLOW_LIST] FL " +
+                                                "JOIN(SELECT PD.*, PC.FOLLOW_ID, PC.ADMITION_DATE, PC.DISCHARGE_DATE, PC.ARCHIVE_NUMBER, PC.DOC_NAME, PC.REF_TURN, S.Name AS SURGERY_TYPE " +
+                                                "             FROM FU_PATIENT_DEMOGRAPHIC PD " +
+                                                "               INNER JOIN FU_FOLLOW_PATIENT_CLINICAL PC  ON PD.PATIENT_ID = PC.PATIENT_ID " +
+                                                "               JOIN MI_Surgery_type S ON PC.Surgery_Type = S.Id) PCD   ON PCD.PATIENT_ID = FL.PATIENT_ID AND PCD.FOLLOW_ID = FL.FOLLOW_ID " +
+                                                "WHERE FL.FOLLOWUP_DATE  " + Program.DateRange, con);
+                adp.Fill(dt);
+                //dgvList.DataSource = dt;
+
+                Excel_column_name(dt);
+                // Insert DataTable to an Excel worksheet.
+                worksheet.InsertDataTable(dt,
+                    new InsertDataTableOptions()
+                    {
+                        ColumnHeaders = true,
+                        StartRow = 0
+                    });
+                worksheet.ViewOptions.ShowColumnsFromRightToLeft = true;   //layout right to left
+
+
+                #region Set Excel Column Option
+                //worksheet.Columns[13].Width = 10000;
+                //worksheet.Columns[13].AutoFit();
+
+                #endregion
+
+
+                try
+                {
+                    workbook.Save(Program.SavePath + "Follow_List_Report.xlsx");
+                    MessageBox.Show("فایل اکسل با موفقیت در محل انتخاب شده به آدرس زیر ذخیره گردید. \n" + Program.SavePath, "", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show("ذخیره فایل اکسل با خطا مواجه شده است. \n اگر فایل اکسل از قبل باز هست لطفا ابتدا فایل را ببندید سپس امتحان بفرمایید. \n" + ex.Message, "خطا", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+                con.Close();
+
+            }
+            else
+            {
+                MessageBox.Show("مشکلی پیش آمده است مجددا امتحان کنید", "خطا", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        void Excel_column_name(DataTable dt)
+        {
+            dt.Columns["Patient_ID"].ColumnName = "کد بیمار";
+            dt.Columns["First_name"].ColumnName = "نام";
+            dt.Columns["Last_name"].ColumnName = "نام خانوادگی";
+            dt.Columns["national_code"].ColumnName = "کد ملی";
+            dt.Columns["Year_Birth_date"].ColumnName = "تولد";
+            dt.Columns["Tel"].ColumnName = "تلفن";
+            dt.Columns["Follow_ID"].ColumnName = "کد پیگیری";
+            dt.Columns["Archive_number"].ColumnName = "شماره پرونده";
+            dt.Columns["ref_turn"].ColumnName = "نوبت مراجعه";
+            dt.Columns["Doc_name"].ColumnName = "پزشک";
+            dt.Columns["Admition_Date"].ColumnName = "تاریخ بستری";
+            dt.Columns["Discharge_Date"].ColumnName = "تاریخ نرخیص";
+            dt.Columns["Surgery_Type"].ColumnName = "نوع عمل";
+            dt.Columns["FollowUp_Date"].ColumnName = "تاریخ پیگیری";
+            dt.Columns["Follow_turn"].ColumnName = "نوبت پیگیری";
+            dt.Columns["Flag"].ColumnName = "نتیجه";
+
+            //return dt;
         }
     }
 }

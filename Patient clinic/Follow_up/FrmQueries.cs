@@ -145,11 +145,12 @@ namespace Patient_clinic
                 {
                     cmd.Parameters.Clear();
                     cmd.CommandText = "INSERT INTO[dbo].[FU_FollowUp_Answers] " +
-                                    "        ([Patient_ID],[Follow_ID],[Q_ID],[Answer])" +
-                                    "    VALUES(@Patient_ID, @Follow_ID, @Q_ID, @Answer)";
+                                    "        ([Patient_ID],[Follow_ID],[Q_ID],[Answer],[Follow_turn])" +
+                                    "    VALUES(@Patient_ID, @Follow_ID, @Q_ID, @Answer,@Follow_turn)";
 
                     cmd.Parameters.AddWithValue("@Patient_ID", Patient_ID_);
                     cmd.Parameters.AddWithValue("@Follow_ID", Follow_ID_);
+                    cmd.Parameters.AddWithValue("@Follow_turn", Follow_turn_);
                     cmd.Parameters.AddWithValue("@Q_ID", Convert.ToInt32(radGVQuestions.Rows[i].Cells["ID"].Value));
                     cmd.Parameters.AddWithValue("@Answer", Convert.ToBoolean(radGVQuestions.Rows[i].Cells["chk"].Value));
 
@@ -158,11 +159,12 @@ namespace Patient_clinic
                 //Q15
                 cmd.Parameters.Clear();
                 cmd.CommandText = "INSERT INTO[dbo].[FU_FollowUp_Answers] " +
-                                "        ([Patient_ID],[Follow_ID],[Q_ID],[Answer])" +
-                                "    VALUES(@Patient_ID, @Follow_ID, @Q_ID, @Answer)";
+                                "        ([Patient_ID],[Follow_ID],[Q_ID],[Answer],[Follow_turn])" +
+                                "    VALUES(@Patient_ID, @Follow_ID, @Q_ID, @Answer,@Follow_turn)";
 
                 cmd.Parameters.AddWithValue("@Patient_ID", Patient_ID_);
                 cmd.Parameters.AddWithValue("@Follow_ID", Follow_ID_);
+                cmd.Parameters.AddWithValue("@Follow_turn", Follow_turn_);
                 cmd.Parameters.AddWithValue("@Q_ID", 15);
                 cmd.Parameters.AddWithValue("@Answer", Q15);
 
@@ -171,11 +173,12 @@ namespace Patient_clinic
                 //Q16
                 cmd.Parameters.Clear();
                 cmd.CommandText = "INSERT INTO[dbo].[FU_FollowUp_Answers] " +
-                                "        ([Patient_ID],[Follow_ID],[Q_ID],[Answer])" +
-                                "    VALUES(@Patient_ID, @Follow_ID, @Q_ID, @Answer)";
+                                "        ([Patient_ID],[Follow_ID],[Q_ID],[Answer],[Follow_turn])" +
+                                "    VALUES(@Patient_ID, @Follow_ID, @Q_ID, @Answer,@Follow_turn)";
 
                 cmd.Parameters.AddWithValue("@Patient_ID", Patient_ID_);
                 cmd.Parameters.AddWithValue("@Follow_ID", Follow_ID_);
+                cmd.Parameters.AddWithValue("@Follow_turn", Follow_turn_);
                 cmd.Parameters.AddWithValue("@Q_ID", 16);
                 cmd.Parameters.AddWithValue("@Answer", Q16);
 
@@ -192,7 +195,7 @@ namespace Patient_clinic
             catch (Exception ex)
             {
                 cmd.Parameters.Clear();
-                cmd.CommandText = " DELETE FROM[dbo].[FU_FollowUp_Answers]  WHERE [Patient_ID] =" + Patient_ID_ + " AND [Follow_ID] =" + Follow_ID_;
+                cmd.CommandText = " DELETE FROM[dbo].[FU_FollowUp_Answers]  WHERE [Patient_ID] =" + Patient_ID_ + " AND [Follow_ID] =" + Follow_ID_ + " AND [Follow_turn] =" + Follow_turn_;
                 cmd.ExecuteNonQuery();
                 MessageBox.Show(ex.Message);
                 con.Close();
