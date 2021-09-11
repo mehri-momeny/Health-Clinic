@@ -388,7 +388,7 @@ namespace Patient_clinic
                                     "join MI_Education E on p.Education = e.code " +
                                     "where Ref_Date " + Program.DateRange, con);
                 adp.Fill(dt);
-                dgvList.DataSource = dt;
+                //dgvList.DataSource = dt;
 
                 Excel_column_name(dt);
                 // Insert DataTable to an Excel worksheet.
