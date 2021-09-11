@@ -421,8 +421,8 @@ namespace Patient_clinic.health_education_indicators
                 }
                 //Form Data
                 cmd.Parameters.Clear();
-                cmd.CommandText = "INSERT INTO [dbo].[EI_Forms_Point] ([Form_ID],[Section_ID],[Result],[Date],[Evaluator_name],[Patient_ID],[Description],[Nurse_ID]) " +
-                                  "  VALUES(@Form_ID, @Section_ID, @Result, @Date, @Evaluator_name, @Patient_ID, @Description,@Nurse_ID)";
+                cmd.CommandText = "INSERT INTO [dbo].[EI_Forms_Point] ([Form_ID],[Section_ID],[Result],[Date],[Evaluator_name],[Patient_ID],[Description],[Nurse_ID],[InsertLog]) " +
+                                  "  VALUES(@Form_ID, @Section_ID, @Result, @Date, @Evaluator_name, @Patient_ID, @Description,@Nurse_ID,@InsertLog)";
 
                 cmd.Parameters.AddWithValue("@Form_ID", Form_ID);
                 cmd.Parameters.AddWithValue("@Section_ID", Section_ID);
@@ -432,6 +432,8 @@ namespace Patient_clinic.health_education_indicators
                 cmd.Parameters.AddWithValue("@Patient_ID", Patient_ID);
                 cmd.Parameters.AddWithValue("@Description", txtDescription.Text);
                 cmd.Parameters.AddWithValue("@Nurse_ID", Nurse_ID);
+                cmd.Parameters.AddWithValue("@InsertLog", DateTime.Now + " " + System.Security.Principal.WindowsIdentity.GetCurrent().Name);
+
 
                 cmd.ExecuteNonQuery();
 

@@ -127,9 +127,9 @@ namespace Patient_clinic
                     // insert Dempgraphic Record patient 
                     cmd.Parameters.Clear();
                     cmd.CommandText = "INSERT INTO [dbo].[FU_Patient_Demographic]" +
-                                      "([Patient_ID],[First_name],[Last_name],[national_code],[Year_Birth_date],[Tel])" +
+                                      "([Patient_ID],[First_name],[Last_name],[national_code],[Year_Birth_date],[Tel],[InsertLog])" +
                                         "VALUES" +
-                                        "(@Patient_ID, @First_name, @Last_name, @national_code, @Year_Birth_date, @Tel)";
+                                        "(@Patient_ID, @First_name, @Last_name, @national_code, @Year_Birth_date, @Tel,@InsertLog)";
 
                     cmd.Parameters.AddWithValue("@Patient_ID", Patient_ID);
                     cmd.Parameters.AddWithValue("@national_code", txtNational_Code.Text);
@@ -137,6 +137,8 @@ namespace Patient_clinic
                     cmd.Parameters.AddWithValue("@Last_name", txtLastName.Text);
                     cmd.Parameters.AddWithValue("@Year_Birth_date", txtBirth_Year.Text);
                     cmd.Parameters.AddWithValue("@Tel", txtMobile.Text);
+                    cmd.Parameters.AddWithValue("@InsertLog", DateTime.Now + " " + System.Security.Principal.WindowsIdentity.GetCurrent().Name);
+
                     cmd.ExecuteNonQuery();
                 }
                 else
@@ -144,12 +146,13 @@ namespace Patient_clinic
                     //update name and other information 
                     cmd.Parameters.Clear();
                     cmd.CommandText = "UPDATE [dbo].[FU_Patient_Demographic]" +
-                        " SET [First_name] =@First_name,[Last_name] = @Last_name,[Year_Birth_date] =@Year_Birth_date,[Tel] = @Tel" +
+                        " SET [First_name] =@First_name,[Last_name] = @Last_name,[Year_Birth_date] =@Year_Birth_date,[Tel] = @Tel, [InsertLog]=@InsertLog " +
                         " WHERE [Patient_ID] =" + Patient_ID;
                     cmd.Parameters.AddWithValue("@First_name", txtFirstName.Text);
                     cmd.Parameters.AddWithValue("@Last_name", txtLastName.Text);
                     cmd.Parameters.AddWithValue("@Year_Birth_date", txtBirth_Year.Text);
                     cmd.Parameters.AddWithValue("@Tel", txtMobile.Text);
+                    cmd.Parameters.AddWithValue("@InsertLog", DateTime.Now + " " + System.Security.Principal.WindowsIdentity.GetCurrent().Name);
                     cmd.ExecuteNonQuery();
 
                     //////temp for checking 

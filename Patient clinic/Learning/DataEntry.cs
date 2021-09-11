@@ -421,7 +421,7 @@ namespace Patient_clinic
         void load_default_values()
         {
 
-           // bprefdate.Value = ParsePersianDate(lblDate.Text);
+            // bprefdate.Value = ParsePersianDate(lblDate.Text);
             //bprefdate.Value = Convert.ToDateTime(lblDate.Text);
             bPCaltxtbox.Today_Click(null, null);
             bPCaltxtbox.ReadOnly = false;
@@ -510,130 +510,148 @@ namespace Patient_clinic
         }
         private void Save_data()
         {
-            cmd.Connection = con;
-            cmd.Parameters.Clear();
-            cmd.CommandText = "INSERT INTO [dbo].[Patients]" +
-                "           ([Patient_ID],[Patient_ID_Code],[First_name],[Last_name],[national_code],[Father_name],[Year_Birth_date],[Tel],[Age],[Diagnose]" +
-                "           ,[History],[OtherDisease]" +//[DM],[HTN],[Asthma],[HD],[HLP],[Cancer],
-                "		  ,[Doctor],[Insurer],[Insurance_type] ,[Education],[Patient_partner],[Ref_Date],[Ref_type],[Ref_turn],[Train_type]" +
-                "           ,[care_before_surgery],[care_after_surgery],[care_disease_type],[care_background_disease]" +
-                "           ,[visit_description],[Learn_asses],[Instructor_name])" +
-                "     VALUES" +
-                "           (@Patient_ID,@Patient_ID_Code,@FirstName ,@Last_name,@national_code ,@father_name,@Year_Birth_date , @Tel,@Age, @Diagnose" +
-                                ",@History,@OtherDisease" +//@DM,@HTN,@Asthma,@HD,@HLP,@Cancer,
-                "          , @Doctor,@Insurer,@Insurance_type,@Education,@Patient_partner,@Ref_Date,@Ref_type,@Ref_turn,@Train_type" +
-                                ",@care_before_surgery,@care_after_surgery,@care_disease_type,@care_background_disease" +
-                "           ,@visit_description,@Learn_asses,@Instructor_name)";
-
-            cmd.Parameters.AddWithValue("@Patient_ID", Program.Patient_ID);
-            cmd.Parameters.AddWithValue("@Patient_ID_Code", txtPatientCode.Text);
-            cmd.Parameters.AddWithValue("@FirstName", txtFirstname.Text);
-            cmd.Parameters.AddWithValue("@Last_name", txtlastname.Text);
-            cmd.Parameters.AddWithValue("@national_code", txtNationalcode.Text);
-            cmd.Parameters.AddWithValue("@father_name", txtfathername.Text);
-            cmd.Parameters.AddWithValue("@Year_Birth_date", txtBirth_year.Text);
-            cmd.Parameters.AddWithValue("@Tel", txttel.Text);
-            cmd.Parameters.AddWithValue("@Age", int.Parse(LblAge.Text));
-            cmd.Parameters.AddWithValue("@Diagnose", cmbdiagnose.SelectedValue);
-            cmd.Parameters.AddWithValue("@History", chbHistory.Checked);
-            cmd.Parameters.AddWithValue("@OtherDisease", txtOtherdisease.Text);
-            if (chbdoctor.Checked == true)
-                cmd.Parameters.AddWithValue("@Doctor", cmbDoctor.SelectedValue);
-            else
-                cmd.Parameters.AddWithValue("@Doctor", "");
-
-            cmd.Parameters.AddWithValue("@Insurer", cmbinsurance.SelectedValue);
-            cmd.Parameters.AddWithValue("@Insurance_type", cmbInsuranceType.SelectedValue);
-            cmd.Parameters.AddWithValue("@Education", cmbeducation.SelectedValue);
-            cmd.Parameters.AddWithValue("@Patient_partner", cmbpartner.Text);
-
-            cmd.Parameters.AddWithValue("@Ref_Date", bPCaltxtbox.Text);//bprefdate
-            cmd.Parameters.AddWithValue("@Ref_type", cmbreftype.Text);
-            cmd.Parameters.AddWithValue("@Ref_turn", refturn);
-            cmd.Parameters.AddWithValue("@Train_type", cmblearntype.Text);
-            //Train title
-            cmd.Parameters.AddWithValue("@care_before_surgery", chbBefor.Checked);
-            cmd.Parameters.AddWithValue("@care_after_surgery", chbafter.Checked);
-            cmd.Parameters.AddWithValue("@care_disease_type", chbdisease.Checked);
-            cmd.Parameters.AddWithValue("@care_background_disease", chbbackdisease.Checked);
-
-            cmd.Parameters.AddWithValue("@visit_description", txtrefDesc.Text);
-            cmd.Parameters.AddWithValue("@Learn_asses", cmblearnasses.Text);
-
-            cmd.Parameters.AddWithValue("@Instructor_name", lblinstructor.Text);
-
-            con.Open();
-            cmd.ExecuteNonQuery();
-
-
-            //History
-            if (chbHistory.Checked)
+            try
             {
-                //cmd.Parameters.AddWithValue("@Patient_id", Patient_ID);
-                if (chbDM.Checked)
-                {
-                    cmd.CommandText = " IF not EXISTS (SELECT * FROM Patient_History where Patient_ID = " + Program.Patient_ID + " and ref_turn = " + refturn + " and History_ID=1)" +
-                        "INSERT INTO [dbo].[Patient_History]([Patient_ID],[ref_turn],[History_ID])     VALUES     (" + Program.Patient_ID + "," + refturn + ",1)";  //کد مربوط به DM
-                    //cmd.Parameters.AddWithValue("@Patient_id", Patient_ID);
-                    cmd.ExecuteNonQuery();
-                }
-                if (chbhtn.Checked)
-                {
-                    cmd.CommandText = " IF not EXISTS (SELECT * FROM Patient_History where Patient_ID = " + Program.Patient_ID + " and ref_turn = " + refturn + " and History_ID=2)" +
-                        "INSERT INTO [dbo].[Patient_History]([Patient_ID],[ref_turn],[History_ID])      VALUES     (" + Program.Patient_ID + "," + refturn + ",2) ";  //کد مربوط به HTN
-                    //cmd.Parameters.AddWithValue("@Patient_id", Patient_ID);
-                    cmd.ExecuteNonQuery();
-                }
-                if (chbAsthma.Checked)
-                {
-                    cmd.CommandText = " IF not EXISTS (SELECT * FROM Patient_History where Patient_ID = " + Program.Patient_ID + " and ref_turn = " + refturn + " and History_ID=3)" +
-                        "INSERT INTO [dbo].[Patient_History]([Patient_ID],[ref_turn],[History_ID])     VALUES     (" + Program.Patient_ID + "," + refturn + ",3)";  //کد مربوط به Asthma
-                    //cmd.Parameters.AddWithValue("@Patient_id", Patient_ID);
-                    cmd.ExecuteNonQuery();
-                }
-                if (chbhd.Checked)
-                {
-                    cmd.CommandText = " IF not EXISTS (SELECT * FROM Patient_History where Patient_ID = " + Program.Patient_ID + " and ref_turn = " + refturn + " and History_ID=4)" +
-                        "INSERT INTO [dbo].[Patient_History]([Patient_ID],[ref_turn],[History_ID])      VALUES     (" + Program.Patient_ID + "," + refturn + ",4)";  //کد مربوط به HD
-                    //cmd.Parameters.AddWithValue("@Patient_id", Patient_ID);
-                    cmd.ExecuteNonQuery();
-                }
-                if (chbhlp.Checked)
-                {
-                    cmd.CommandText = " IF not EXISTS (SELECT * FROM Patient_History where Patient_ID = " + Program.Patient_ID + " and ref_turn = " + refturn + " and History_ID=5)" +
-                        "INSERT INTO [dbo].[Patient_History]([Patient_ID],[ref_turn],[History_ID])       VALUES     (" + Program.Patient_ID + "," + refturn + ",5)";  //کد مربوط به HLP
-                    //cmd.Parameters.AddWithValue("@Patient_id", Patient_ID);
-                    cmd.ExecuteNonQuery();
-                }
-                if (chbCancer.Checked)
-                {
-                    cmd.CommandText = " IF not EXISTS (SELECT * FROM Patient_History where Patient_ID = " + Program.Patient_ID + " and ref_turn = " + refturn + " and History_ID=6)" +
-                        "INSERT INTO [dbo].[Patient_History]([Patient_ID],[ref_turn],[History_ID])      VALUES     (" + Program.Patient_ID + "," + refturn + ",6)";  //کد مربوط به Cancer
-                    //cmd.Parameters.AddWithValue("@Patient_id", Patient_ID);
-                    cmd.ExecuteNonQuery();
-                }
-                if (chbmother.Checked)
-                {
-                    cmd.CommandText = " IF not EXISTS (SELECT * FROM Patient_History where Patient_ID = " + Program.Patient_ID + " and ref_turn = " + refturn + " and History_ID=7)" +
-                        "INSERT INTO [dbo].[Patient_History]([Patient_ID],[ref_turn],[History_ID])      VALUES     (" + Program.Patient_ID + "," + refturn + ",7)";  //کد مربوط به Mother
-                    cmd.ExecuteNonQuery();
-                }
-                //cmd.Parameters.AddWithValue("@HTN", chbhtn.Checked);
-                //cmd.Parameters.AddWithValue("@Asthma", chbAsthma.Checked);
-                //cmd.Parameters.AddWithValue("@HD", chbhd.Checked);
-                //cmd.Parameters.AddWithValue("@HLP", chbhlp.Checked);
-                //cmd.Parameters.AddWithValue("@Cancer", chbCancer.Checked);
-                //cmd.Parameters.AddWithValue("@Mother", chbmother.Checked);
+                cmd.Connection = con;
+                cmd.Parameters.Clear();
+                cmd.CommandText = "INSERT INTO [dbo].[Patients]" +
+                    "           ([Patient_ID],[Patient_ID_Code],[First_name],[Last_name],[national_code],[Father_name],[Year_Birth_date],[Tel],[Age],[Diagnose]" +
+                    "           ,[History],[OtherDisease]" +//[DM],[HTN],[Asthma],[HD],[HLP],[Cancer],
+                    "		  ,[Doctor],[Insurer],[Insurance_type] ,[Education],[Patient_partner],[Ref_Date],[Ref_type],[Ref_turn],[Train_type]" +
+                    "           ,[care_before_surgery],[care_after_surgery],[care_disease_type],[care_background_disease]" +
+                    "           ,[visit_description],[Learn_asses],[Instructor_name],[InsertLog])" +
+                    "     VALUES" +
+                    "           (@Patient_ID,@Patient_ID_Code,@FirstName ,@Last_name,@national_code ,@father_name,@Year_Birth_date , @Tel,@Age, @Diagnose" +
+                                    ",@History,@OtherDisease" +//@DM,@HTN,@Asthma,@HD,@HLP,@Cancer,
+                    "          , @Doctor,@Insurer,@Insurance_type,@Education,@Patient_partner,@Ref_Date,@Ref_type,@Ref_turn,@Train_type" +
+                                    ",@care_before_surgery,@care_after_surgery,@care_disease_type,@care_background_disease" +
+                    "           ,@visit_description,@Learn_asses,@Instructor_name,@InsertLog)";
 
+                cmd.Parameters.AddWithValue("@Patient_ID", Program.Patient_ID);
+                cmd.Parameters.AddWithValue("@Patient_ID_Code", txtPatientCode.Text);
+                cmd.Parameters.AddWithValue("@FirstName", txtFirstname.Text);
+                cmd.Parameters.AddWithValue("@Last_name", txtlastname.Text);
+                cmd.Parameters.AddWithValue("@national_code", txtNationalcode.Text);
+                cmd.Parameters.AddWithValue("@father_name", txtfathername.Text);
+                cmd.Parameters.AddWithValue("@Year_Birth_date", txtBirth_year.Text);
+                cmd.Parameters.AddWithValue("@Tel", txttel.Text);
+                cmd.Parameters.AddWithValue("@Age", int.Parse(LblAge.Text));
+                cmd.Parameters.AddWithValue("@Diagnose", cmbdiagnose.SelectedValue);
+                cmd.Parameters.AddWithValue("@History", chbHistory.Checked);
+                cmd.Parameters.AddWithValue("@OtherDisease", txtOtherdisease.Text);
+                if (chbdoctor.Checked == true)
+                    cmd.Parameters.AddWithValue("@Doctor", cmbDoctor.SelectedValue);
+                else
+                    cmd.Parameters.AddWithValue("@Doctor", "");
+
+                cmd.Parameters.AddWithValue("@Insurer", cmbinsurance.SelectedValue);
+                cmd.Parameters.AddWithValue("@Insurance_type", cmbInsuranceType.SelectedValue);
+                cmd.Parameters.AddWithValue("@Education", cmbeducation.SelectedValue);
+                cmd.Parameters.AddWithValue("@Patient_partner", cmbpartner.Text);
+
+                cmd.Parameters.AddWithValue("@Ref_Date", bPCaltxtbox.Text);//bprefdate
+                cmd.Parameters.AddWithValue("@Ref_type", cmbreftype.Text);
+                cmd.Parameters.AddWithValue("@Ref_turn", refturn);
+                cmd.Parameters.AddWithValue("@Train_type", cmblearntype.Text);
+                //Train title
+                cmd.Parameters.AddWithValue("@care_before_surgery", chbBefor.Checked);
+                cmd.Parameters.AddWithValue("@care_after_surgery", chbafter.Checked);
+                cmd.Parameters.AddWithValue("@care_disease_type", chbdisease.Checked);
+                cmd.Parameters.AddWithValue("@care_background_disease", chbbackdisease.Checked);
+
+                cmd.Parameters.AddWithValue("@visit_description", txtrefDesc.Text);
+                cmd.Parameters.AddWithValue("@Learn_asses", cmblearnasses.Text);
+
+                cmd.Parameters.AddWithValue("@Instructor_name", lblinstructor.Text);
+                cmd.Parameters.AddWithValue("@InsertLog", DateTime.Now + " " + System.Security.Principal.WindowsIdentity.GetCurrent().Name);
+                con.Open();
+                cmd.ExecuteNonQuery();
+
+
+                //History
+                if (chbHistory.Checked)
+                {
+                    //cmd.Parameters.AddWithValue("@Patient_id", Patient_ID);
+                    if (chbDM.Checked)
+                    {
+                        cmd.CommandText = " IF not EXISTS (SELECT * FROM Patient_History where Patient_ID = " + Program.Patient_ID + " and ref_turn = " + refturn + " and History_ID=1)" +
+                            "INSERT INTO [dbo].[Patient_History]([Patient_ID],[ref_turn],[History_ID])     VALUES     (" + Program.Patient_ID + "," + refturn + ",1)";  //کد مربوط به DM
+                                                                                                                                                                        //cmd.Parameters.AddWithValue("@Patient_id", Patient_ID);
+                        cmd.ExecuteNonQuery();
+                    }
+                    if (chbhtn.Checked)
+                    {
+                        cmd.CommandText = " IF not EXISTS (SELECT * FROM Patient_History where Patient_ID = " + Program.Patient_ID + " and ref_turn = " + refturn + " and History_ID=2)" +
+                            "INSERT INTO [dbo].[Patient_History]([Patient_ID],[ref_turn],[History_ID])      VALUES     (" + Program.Patient_ID + "," + refturn + ",2) ";  //کد مربوط به HTN
+                                                                                                                                                                          //cmd.Parameters.AddWithValue("@Patient_id", Patient_ID);
+                        cmd.ExecuteNonQuery();
+                    }
+                    if (chbAsthma.Checked)
+                    {
+                        cmd.CommandText = " IF not EXISTS (SELECT * FROM Patient_History where Patient_ID = " + Program.Patient_ID + " and ref_turn = " + refturn + " and History_ID=3)" +
+                            "INSERT INTO [dbo].[Patient_History]([Patient_ID],[ref_turn],[History_ID])     VALUES     (" + Program.Patient_ID + "," + refturn + ",3)";  //کد مربوط به Asthma
+                                                                                                                                                                        //cmd.Parameters.AddWithValue("@Patient_id", Patient_ID);
+                        cmd.ExecuteNonQuery();
+                    }
+                    if (chbhd.Checked)
+                    {
+                        cmd.CommandText = " IF not EXISTS (SELECT * FROM Patient_History where Patient_ID = " + Program.Patient_ID + " and ref_turn = " + refturn + " and History_ID=4)" +
+                            "INSERT INTO [dbo].[Patient_History]([Patient_ID],[ref_turn],[History_ID])      VALUES     (" + Program.Patient_ID + "," + refturn + ",4)";  //کد مربوط به HD
+                                                                                                                                                                         //cmd.Parameters.AddWithValue("@Patient_id", Patient_ID);
+                        cmd.ExecuteNonQuery();
+                    }
+                    if (chbhlp.Checked)
+                    {
+                        cmd.CommandText = " IF not EXISTS (SELECT * FROM Patient_History where Patient_ID = " + Program.Patient_ID + " and ref_turn = " + refturn + " and History_ID=5)" +
+                            "INSERT INTO [dbo].[Patient_History]([Patient_ID],[ref_turn],[History_ID])       VALUES     (" + Program.Patient_ID + "," + refturn + ",5)";  //کد مربوط به HLP
+                                                                                                                                                                          //cmd.Parameters.AddWithValue("@Patient_id", Patient_ID);
+                        cmd.ExecuteNonQuery();
+                    }
+                    if (chbCancer.Checked)
+                    {
+                        cmd.CommandText = " IF not EXISTS (SELECT * FROM Patient_History where Patient_ID = " + Program.Patient_ID + " and ref_turn = " + refturn + " and History_ID=6)" +
+                            "INSERT INTO [dbo].[Patient_History]([Patient_ID],[ref_turn],[History_ID])      VALUES     (" + Program.Patient_ID + "," + refturn + ",6)";  //کد مربوط به Cancer
+                                                                                                                                                                         //cmd.Parameters.AddWithValue("@Patient_id", Patient_ID);
+                        cmd.ExecuteNonQuery();
+                    }
+                    if (chbmother.Checked)
+                    {
+                        cmd.CommandText = " IF not EXISTS (SELECT * FROM Patient_History where Patient_ID = " + Program.Patient_ID + " and ref_turn = " + refturn + " and History_ID=7)" +
+                            "INSERT INTO [dbo].[Patient_History]([Patient_ID],[ref_turn],[History_ID])      VALUES     (" + Program.Patient_ID + "," + refturn + ",7)";  //کد مربوط به Mother
+                        cmd.ExecuteNonQuery();
+                    }
+                    //cmd.Parameters.AddWithValue("@HTN", chbhtn.Checked);
+                    //cmd.Parameters.AddWithValue("@Asthma", chbAsthma.Checked);
+                    //cmd.Parameters.AddWithValue("@HD", chbhd.Checked);
+                    //cmd.Parameters.AddWithValue("@HLP", chbhlp.Checked);
+                    //cmd.Parameters.AddWithValue("@Cancer", chbCancer.Checked);
+                    //cmd.Parameters.AddWithValue("@Mother", chbmother.Checked);
+
+                }
+                //بروزرسانی آخرین آیدی 
+                cmd.Parameters.Clear();
+                cmd.CommandText = "UPDATE [dbo].[Last_Patient_ID]  SET [Last_ID] =" + Program.Patient_ID + " WHERE Last_ID < " + Program.Patient_ID;
+                cmd.ExecuteNonQuery();
             }
-            //بروزرسانی آخرین آیدی 
-            cmd.CommandText = "UPDATE [dbo].[Last_Patient_ID]  SET [Last_ID] =" + Program.Patient_ID + " WHERE Last_ID < " + Program.Patient_ID;
-            cmd.ExecuteNonQuery();
+            catch (Exception ex)
+            {
+                cmd.Parameters.Clear();
+                cmd.CommandText = "DELETE FROM[dbo].[Patients] WHERE Patient_ID =" + Program.Patient_ID;
+                cmd.ExecuteNonQuery();
+
+                cmd.Parameters.Clear();
+                cmd.CommandText = "DELETE FROM [dbo].[Patient_History] WHERE Patient_ID = " + Program.Patient_ID;
+                cmd.ExecuteNonQuery();
+
+                MessageBox.Show("در ذخیره سازی اطلاعات مشکلی بوجود آمده است ,مجددا تلاش کنید. \n" + ex.Message, "خطا", MessageBoxButtons.OK, MessageBoxIcon.Error); 
+            }
             con.Close();
         }
 
         bool Update_Data()
         {
+            try
+            {
             cmd.Connection = con;
             cmd.Parameters.Clear();
             cmd.CommandText = "UPDATE [dbo].[Patients]							" +
@@ -670,6 +688,7 @@ namespace Patient_clinic
                             "      ,[visit_description] = @visit_description " +
                             "      ,[Learn_asses] = @Learn_asses				" +
                             "      ,[Instructor_name] = @Instructor_name		" +
+                            "      ,[InsertLog] = @InsertLog		" +
                              " WHERE Patient_ID=@Patient_ID and ref_turn = @Ref_turn	";
 
             cmd.Parameters.AddWithValue("@Patient_ID", Program.Patient_ID);
@@ -716,6 +735,7 @@ namespace Patient_clinic
             cmd.Parameters.AddWithValue("@Learn_asses", cmblearnasses.Text);
             cmd.Parameters.AddWithValue("@Instructor_name", lblinstructor.Text);
 
+            cmd.Parameters.AddWithValue("@InsertLog", DateTime.Now + " " + System.Security.Principal.WindowsIdentity.GetCurrent().Name);
             con.Open();
             if (cmd.ExecuteNonQuery() == 0)
             {
@@ -826,9 +846,14 @@ namespace Patient_clinic
                 }
 
             }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("در ذخیره سازی اطلاعات مشکلی بوجود آمده است ,مجددا تلاش کنید. \n" + ex.Message, "خطا", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
             con.Close();
             return true;
-
         }
 
 
@@ -868,7 +893,7 @@ namespace Patient_clinic
                 con.Close();
         }
 
-        
+
 
 
         #endregion
@@ -880,7 +905,6 @@ namespace Patient_clinic
         }
         private void DataEntry_Load(object sender, EventArgs e)
         {
-
             lblDate.Text = Main_Functions.Get_Today_Shamsi();
             lblinstructor.Text = Program.Read_User_Name();
 
