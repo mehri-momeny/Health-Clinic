@@ -74,14 +74,20 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.groupPanel5 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.btnedit = new DevComponents.DotNetBar.ButtonX();
+            this.btnrefresh = new DevComponents.DotNetBar.ButtonX();
             this.lblDay = new System.Windows.Forms.Label();
+            this.btnexit = new DevComponents.DotNetBar.ButtonX();
             this.label17 = new System.Windows.Forms.Label();
+            this.btnshowdata = new DevComponents.DotNetBar.ButtonX();
             this.lblDate = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
+            this.btnsave = new DevComponents.DotNetBar.ButtonX();
             this.lblinstructor = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.groupPanel3 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.bPCaltxtbox = new BPersianCalender.BPersianCalenderTextBox();
+            this.btnAddDiagnose = new DevComponents.DotNetBar.ButtonX();
             this.chbdoctor = new System.Windows.Forms.CheckBox();
             this.cmbDoctor = new System.Windows.Forms.ComboBox();
             this.lbldoctor = new System.Windows.Forms.Label();
@@ -102,12 +108,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.btnedit = new DevComponents.DotNetBar.ButtonX();
-            this.btnrefresh = new DevComponents.DotNetBar.ButtonX();
-            this.btnexit = new DevComponents.DotNetBar.ButtonX();
-            this.btnshowdata = new DevComponents.DotNetBar.ButtonX();
-            this.btnsave = new DevComponents.DotNetBar.ButtonX();
-            this.btnAddDiagnose = new DevComponents.DotNetBar.ButtonX();
             this.groupPanel1.SuspendLayout();
             this.groupPanel2.SuspendLayout();
             this.groupPanel4.SuspendLayout();
@@ -797,6 +797,35 @@
             this.groupPanel5.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel5.TabIndex = 3;
             // 
+            // btnedit
+            // 
+            this.btnedit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnedit.BackColor = System.Drawing.Color.Transparent;
+            this.btnedit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnedit.Image = ((System.Drawing.Image)(resources.GetObject("btnedit.Image")));
+            this.btnedit.Location = new System.Drawing.Point(570, 4);
+            this.btnedit.Name = "btnedit";
+            this.btnedit.Size = new System.Drawing.Size(105, 32);
+            this.btnedit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnedit.TabIndex = 36;
+            this.btnedit.Text = "ویرایش";
+            this.btnedit.Visible = false;
+            this.btnedit.Click += new System.EventHandler(this.Btnedit_Click);
+            // 
+            // btnrefresh
+            // 
+            this.btnrefresh.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnrefresh.BackColor = System.Drawing.Color.Transparent;
+            this.btnrefresh.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnrefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnrefresh.Image")));
+            this.btnrefresh.Location = new System.Drawing.Point(456, 4);
+            this.btnrefresh.Name = "btnrefresh";
+            this.btnrefresh.Size = new System.Drawing.Size(105, 32);
+            this.btnrefresh.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnrefresh.TabIndex = 35;
+            this.btnrefresh.Text = "رفرش";
+            this.btnrefresh.Click += new System.EventHandler(this.Btnrefresh_Click);
+            // 
             // lblDay
             // 
             this.lblDay.AutoSize = true;
@@ -806,6 +835,20 @@
             this.lblDay.Size = new System.Drawing.Size(31, 14);
             this.lblDay.TabIndex = 12;
             this.lblDay.Text = "------";
+            // 
+            // btnexit
+            // 
+            this.btnexit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnexit.BackColor = System.Drawing.Color.Transparent;
+            this.btnexit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnexit.Image = ((System.Drawing.Image)(resources.GetObject("btnexit.Image")));
+            this.btnexit.Location = new System.Drawing.Point(225, 4);
+            this.btnexit.Name = "btnexit";
+            this.btnexit.Size = new System.Drawing.Size(105, 32);
+            this.btnexit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnexit.TabIndex = 32;
+            this.btnexit.Text = "خروج";
+            this.btnexit.Click += new System.EventHandler(this.Btnexit_Click);
             // 
             // label17
             // 
@@ -817,6 +860,20 @@
             this.label17.Size = new System.Drawing.Size(32, 14);
             this.label17.TabIndex = 11;
             this.label17.Text = "روز : ";
+            // 
+            // btnshowdata
+            // 
+            this.btnshowdata.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnshowdata.BackColor = System.Drawing.Color.Transparent;
+            this.btnshowdata.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnshowdata.Image = ((System.Drawing.Image)(resources.GetObject("btnshowdata.Image")));
+            this.btnshowdata.Location = new System.Drawing.Point(340, 4);
+            this.btnshowdata.Name = "btnshowdata";
+            this.btnshowdata.Size = new System.Drawing.Size(105, 32);
+            this.btnshowdata.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnshowdata.TabIndex = 33;
+            this.btnshowdata.Text = "نمایش داده ها";
+            this.btnshowdata.Click += new System.EventHandler(this.Btnshowdata_Click);
             // 
             // lblDate
             // 
@@ -838,6 +895,20 @@
             this.label18.Size = new System.Drawing.Size(37, 14);
             this.label18.TabIndex = 9;
             this.label18.Text = "تاریخ :";
+            // 
+            // btnsave
+            // 
+            this.btnsave.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnsave.BackColor = System.Drawing.Color.Transparent;
+            this.btnsave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnsave.Image = ((System.Drawing.Image)(resources.GetObject("btnsave.Image")));
+            this.btnsave.Location = new System.Drawing.Point(570, 4);
+            this.btnsave.Name = "btnsave";
+            this.btnsave.Size = new System.Drawing.Size(105, 32);
+            this.btnsave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnsave.TabIndex = 31;
+            this.btnsave.Text = "ثبت";
+            this.btnsave.Click += new System.EventHandler(this.Btnsave_Click);
             // 
             // lblinstructor
             // 
@@ -941,6 +1012,23 @@
             this.bPCaltxtbox.Size = new System.Drawing.Size(140, 22);
             this.bPCaltxtbox.TabIndex = 10;
             this.bPCaltxtbox.Text = "  /  /";
+            // 
+            // btnAddDiagnose
+            // 
+            this.btnAddDiagnose.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnAddDiagnose.BackColor = System.Drawing.Color.Transparent;
+            this.btnAddDiagnose.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnAddDiagnose.Image = ((System.Drawing.Image)(resources.GetObject("btnAddDiagnose.Image")));
+            this.btnAddDiagnose.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnAddDiagnose.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.btnAddDiagnose.Location = new System.Drawing.Point(192, 4);
+            this.btnAddDiagnose.Name = "btnAddDiagnose";
+            this.btnAddDiagnose.Shape = new DevComponents.DotNetBar.EllipticalShapeDescriptor();
+            this.btnAddDiagnose.Size = new System.Drawing.Size(31, 30);
+            this.btnAddDiagnose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnAddDiagnose.TabIndex = 52;
+            this.btnAddDiagnose.Visible = false;
+            this.btnAddDiagnose.Click += new System.EventHandler(this.BtnAddDiagnose_Click);
             // 
             // chbdoctor
             // 
@@ -1228,94 +1316,6 @@
             this.label8.Text = "تاریخ مراجعه:";
             this.label8.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // btnedit
-            // 
-            this.btnedit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnedit.BackColor = System.Drawing.Color.Transparent;
-            this.btnedit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnedit.Image = ((System.Drawing.Image)(resources.GetObject("btnedit.Image")));
-            this.btnedit.Location = new System.Drawing.Point(570, 4);
-            this.btnedit.Name = "btnedit";
-            this.btnedit.Size = new System.Drawing.Size(105, 32);
-            this.btnedit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnedit.TabIndex = 36;
-            this.btnedit.Text = "ویرایش";
-            this.btnedit.Visible = false;
-            this.btnedit.Click += new System.EventHandler(this.Btnedit_Click);
-            // 
-            // btnrefresh
-            // 
-            this.btnrefresh.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnrefresh.BackColor = System.Drawing.Color.Transparent;
-            this.btnrefresh.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnrefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnrefresh.Image")));
-            this.btnrefresh.Location = new System.Drawing.Point(456, 4);
-            this.btnrefresh.Name = "btnrefresh";
-            this.btnrefresh.Size = new System.Drawing.Size(105, 32);
-            this.btnrefresh.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnrefresh.TabIndex = 35;
-            this.btnrefresh.Text = "رفرش";
-            this.btnrefresh.Click += new System.EventHandler(this.Btnrefresh_Click);
-            // 
-            // btnexit
-            // 
-            this.btnexit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnexit.BackColor = System.Drawing.Color.Transparent;
-            this.btnexit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnexit.Image = ((System.Drawing.Image)(resources.GetObject("btnexit.Image")));
-            this.btnexit.Location = new System.Drawing.Point(225, 4);
-            this.btnexit.Name = "btnexit";
-            this.btnexit.Size = new System.Drawing.Size(105, 32);
-            this.btnexit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnexit.TabIndex = 32;
-            this.btnexit.Text = "خروج";
-            this.btnexit.Click += new System.EventHandler(this.Btnexit_Click);
-            // 
-            // btnshowdata
-            // 
-            this.btnshowdata.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnshowdata.BackColor = System.Drawing.Color.Transparent;
-            this.btnshowdata.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnshowdata.Image = ((System.Drawing.Image)(resources.GetObject("btnshowdata.Image")));
-            this.btnshowdata.Location = new System.Drawing.Point(340, 4);
-            this.btnshowdata.Name = "btnshowdata";
-            this.btnshowdata.Size = new System.Drawing.Size(105, 32);
-            this.btnshowdata.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnshowdata.TabIndex = 33;
-            this.btnshowdata.Text = "نمایش داده ها";
-            this.btnshowdata.Click += new System.EventHandler(this.Btnshowdata_Click);
-            // 
-            // btnsave
-            // 
-            this.btnsave.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnsave.BackColor = System.Drawing.Color.Transparent;
-            this.btnsave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnsave.Image = ((System.Drawing.Image)(resources.GetObject("btnsave.Image")));
-            this.btnsave.Location = new System.Drawing.Point(570, 4);
-            this.btnsave.Name = "btnsave";
-            this.btnsave.Size = new System.Drawing.Size(105, 32);
-            this.btnsave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnsave.TabIndex = 31;
-            this.btnsave.Text = "ثبت";
-            this.btnsave.Click += new System.EventHandler(this.Btnsave_Click);
-            // 
-            // btnAddDiagnose
-            // 
-            this.btnAddDiagnose.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnAddDiagnose.BackColor = System.Drawing.Color.Transparent;
-            this.btnAddDiagnose.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnAddDiagnose.Image = ((System.Drawing.Image)(resources.GetObject("btnAddDiagnose.Image")));
-            this.btnAddDiagnose.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnAddDiagnose.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.btnAddDiagnose.Location = new System.Drawing.Point(192, 4);
-            this.btnAddDiagnose.Name = "btnAddDiagnose";
-            this.btnAddDiagnose.Shape = new DevComponents.DotNetBar.EllipticalShapeDescriptor();
-            this.btnAddDiagnose.Size = new System.Drawing.Size(31, 30);
-            this.btnAddDiagnose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnAddDiagnose.TabIndex = 52;
-            this.btnAddDiagnose.Visible = false;
-            this.btnAddDiagnose.Click += new System.EventHandler(this.BtnAddDiagnose_Click);
-            // 
             // DataEntry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -1323,6 +1323,7 @@
             this.ClientSize = new System.Drawing.Size(1046, 604);
             this.Controls.Add(this.groupPanel1);
             this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "DataEntry";
